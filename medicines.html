@@ -1,0 +1,2593 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Medicines | MediCare Pharmacy</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+    /* ================================
+       PAGE HEADER
+    ================================= */
+
+    .page-header {
+        background: linear-gradient(135deg, #e8f8f5, #f8fbfa);
+        padding: 45px 0;
+        border-bottom: 1px solid #e0eeeb;
+    }
+
+    .breadcrumb {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 11px;
+        color: #778583;
+        margin-bottom: 18px;
+    }
+
+    .breadcrumb a {
+        color: #10a48f;
+        font-weight: 700;
+    }
+
+    .breadcrumb i {
+        font-size: 8px;
+    }
+
+    .page-header h1 {
+        color: #083f3a;
+        font-size: clamp(30px, 4vw, 45px);
+        line-height: 1.2;
+    }
+
+    .page-header p {
+        color: #687875;
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+
+    /* ================================
+       MAIN
+    ================================= */
+
+    .medicines-page {
+        padding: 40px 0 70px;
+        background: #f8fbfa;
+    }
+
+    .medicines-layout {
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        gap: 25px;
+        align-items: start;
+    }
+
+
+    /* ================================
+       SIDEBAR
+    ================================= */
+
+    .medicine-sidebar {
+        background: white;
+        border: 1px solid #e3ecea;
+        border-radius: 15px;
+        padding: 20px;
+        position: sticky;
+        top: 15px;
+    }
+
+    .filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #edf2f1;
+    }
+
+    .filter-header h3 {
+        color: #083f3a;
+        font-size: 14px;
+    }
+
+    .filter-header h3 i {
+        color: #10a48f;
+        margin-right: 5px;
+    }
+
+    .filter-header button {
+        background: transparent;
+        color: #10a48f;
+        font-size: 9px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .filter-group {
+        padding: 17px 0;
+        border-bottom: 1px solid #edf2f1;
+    }
+
+    .filter-group h4 {
+        color: #24413e;
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+
+    .filter-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #687875;
+        font-size: 10px;
+        margin: 11px 0;
+        cursor: pointer;
+    }
+
+    .filter-option input {
+        accent-color: #10a48f;
+    }
+
+
+    /* ================================
+       HELP BOX
+    ================================= */
+
+    .help-box {
+        background: #eaf8f5;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 18px;
+        text-align: center;
+    }
+
+    .help-icon {
+        width: 38px;
+        height: 38px;
+        background: #10a48f;
+        color: white;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        margin: auto auto 9px;
+    }
+
+    .help-box h4 {
+        color: #083f3a;
+        font-size: 12px;
+    }
+
+    .help-box p {
+        color: #748481;
+        font-size: 9px;
+        margin: 5px 0 10px;
+    }
+
+    .help-box a {
+        color: #10a48f;
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+
+    /* ================================
+       TOOLBAR
+    ================================= */
+
+    .medicine-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        border: 1px solid #e3ecea;
+        border-radius: 12px;
+        padding: 13px 16px;
+        margin-bottom: 18px;
+    }
+
+    .medicine-toolbar strong {
+        color: #083f3a;
+        font-size: 12px;
+    }
+
+    .medicine-toolbar span {
+        color: #899593;
+        font-size: 10px;
+    }
+
+    .sort-box {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .sort-box label {
+        color: #7a8785;
+        font-size: 10px;
+    }
+
+    .sort-box select {
+        border: 1px solid #dce8e6;
+        border-radius: 7px;
+        padding: 7px 9px;
+        outline: none;
+        color: #405654;
+        font-size: 10px;
+        background: white;
+    }
+
+
+    /* ================================
+       PRODUCTS
+    ================================= */
+
+    .medicine-product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .medicine-product-card {
+        background: white;
+        border: 1px solid #e2ece9;
+        border-radius: 14px;
+        overflow: hidden;
+        transition: 0.25s ease;
+    }
+
+    .medicine-product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(8, 63, 58, 0.08);
+    }
+
+
+    /* PRODUCT IMAGE */
+
+    .medicine-product-image {
+        height: 175px;
+        background: #f1f8f6;
+        display: grid;
+        place-items: center;
+        position: relative;
+    }
+
+    .medicine-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #10a48f;
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 8px;
+        font-weight: 700;
+    }
+
+    .medicine-badge.discount {
+        background: #f45d48;
+    }
+
+    .medicine-heart {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: white;
+        color: #71817f;
+        box-shadow: 0 3px 9px rgba(0,0,0,0.07);
+        cursor: pointer;
+    }
+
+    .medicine-visual {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 34px;
+    }
+
+    .pain-visual {
+        background: #d9f2ed;
+        color: #10a48f;
+    }
+
+    .vitamin-visual {
+        background: #fff0ca;
+        color: #df9b14;
+    }
+
+    .allergy-visual {
+        background: #eee6ff;
+        color: #8253d1;
+    }
+
+    .health-visual {
+        background: #dcecff;
+        color: #3976d5;
+    }
+
+    .personal-visual {
+        background: #ffe8ef;
+        color: #dd5774;
+    }
+
+    .equipment-visual {
+        background: #e9edf0;
+        color: #56676a;
+    }
+
+
+    /* ================================
+       PRODUCT INFO
+    ================================= */
+
+    .medicine-product-info {
+        padding: 14px;
+    }
+
+    .medicine-category {
+        color: #10a48f;
+        font-size: 8px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .medicine-product-info h3 {
+        color: #173d39;
+        font-size: 13px;
+        margin: 5px 0;
+    }
+
+    .medicine-product-info p {
+        color: #7b8886;
+        font-size: 9px;
+        line-height: 1.5;
+        min-height: 28px;
+    }
+
+    .medicine-rating {
+        margin: 9px 0;
+        font-size: 9px;
+    }
+
+    .medicine-rating span {
+        color: #f4b400;
+        letter-spacing: 1px;
+    }
+
+    .medicine-rating small {
+        color: #8b9694;
+        margin-left: 4px;
+    }
+
+
+    /* PRICE */
+
+    .medicine-price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #edf2f1;
+        padding-top: 11px;
+    }
+
+    .medicine-price-row del {
+        display: block;
+        color: #a4afad;
+        font-size: 8px;
+    }
+
+    .medicine-price-row strong {
+        color: #083f3a;
+        font-size: 16px;
+    }
+
+    .medicine-add-btn {
+        background: #e7f7f4;
+        color: #087f71;
+        border-radius: 7px;
+        padding: 7px 10px;
+        font-size: 9px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    .medicine-add-btn:hover {
+        background: #10a48f;
+        color: white;
+    }
+
+
+    /* ================================
+       NO RESULTS
+    ================================= */
+
+    .no-results {
+        display: none;
+        text-align: center;
+        padding: 70px 20px;
+        background: white;
+        border: 1px solid #e3ecea;
+        border-radius: 15px;
+    }
+
+    .no-results-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #eaf8f5;
+        color: #10a48f;
+        display: grid;
+        place-items: center;
+        margin: auto;
+        font-size: 22px;
+    }
+
+    .no-results h3 {
+        color: #083f3a;
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    .no-results p {
+        color: #788683;
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 1000px) {
+
+        .medicines-layout {
+            grid-template-columns: 190px 1fr;
+        }
+
+        .medicine-product-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+        .page-header {
+            padding: 35px 0;
+        }
+
+        .medicines-layout {
+            display: block;
+        }
+
+        .medicine-sidebar {
+            position: static;
+            margin-bottom: 18px;
+        }
+
+        .medicine-product-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .medicine-product-image {
+            height: 150px;
+        }
+
+        .medicine-visual {
+            width: 68px;
+            height: 68px;
+            font-size: 28px;
+        }
+
+    }
+
+
+    @media (max-width: 430px) {
+
+        .medicine-product-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .medicine-product-image {
+            height: 190px;
+        }
+
+        .medicine-visual {
+            width: 85px;
+            height: 85px;
+            font-size: 35px;
+        }
+
+        .medicine-toolbar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .sort-box {
+            justify-content: space-between;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<div class="top-bar">
+
+```
+<div class="container top-content">
+
+    <span>
+        <i class="fa-solid fa-truck"></i>
+        Fast & Safe Delivery
+    </span>
+
+    <span>
+        <i class="fa-solid fa-phone"></i>
+        Need Help? +91 98765 43210
+    </span>
+
+</div>
+```
+
+</div>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+```
+<div class="container nav-container">
+
+
+    <a href="index.html" class="logo">
+
+        <span class="logo-icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+
+        <span>
+
+            <strong>MediCare</strong>
+
+            <small>PHARMACY</small>
+
+        </span>
+
+    </a>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search medicines, health products..."
+        >
+
+        <button type="button">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+
+    <div class="nav-actions">
+
+        <a href="#" class="action-item">
+
+            <i class="fa-regular fa-user"></i>
+
+            <span>Account</span>
+
+        </a>
+
+
+        <a href="cart.html" class="action-item cart">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span>Cart</span>
+
+            <b id="cartCount">0</b>
+
+        </a>
+
+
+        <button class="menu-btn" id="menuBtn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<nav class="main-nav" id="mainNav">
+
+    <div class="container nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="medicines.html" class="active">
+            Medicines
+        </a>
+
+        <a href="medicines.html">
+            Categories
+        </a>
+
+        <a href="medicines.html">
+            Offers
+        </a>
+
+        <a href="index.html#about">
+            About Us
+        </a>
+
+        <a href="index.html#contact">
+            Contact
+        </a>
+
+    </div>
+
+</nav>
+```
+
+</header>
+
+<!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
+<section class="page-header">
+
+```
+<div class="container">
+
+    <div class="breadcrumb">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>
+            Medicines
+        </span>
+
+    </div>
+
+
+    <span class="section-label">
+        MEDICARE PHARMACY
+    </span>
+
+
+    <h1>
+        Medicines & Healthcare Products
+    </h1>
+
+
+    <p>
+        Find medicines and healthcare essentials for your everyday needs.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- =====================================================
+     MEDICINES
+===================================================== -->
+
+<main class="medicines-page">
+
+```
+<div class="container medicines-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="medicine-sidebar">
+
+
+        <div class="filter-header">
+
+            <h3>
+
+                <i class="fa-solid fa-filter"></i>
+
+                Filters
+
+            </h3>
+
+
+            <button id="clearFilters">
+                Clear All
+            </button>
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="filter-group">
+
+            <h4>
+                Categories
+            </h4>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="radio"
+                    name="category"
+                    value="all"
+                    checked
+                >
+
+                All Medicines
+
+            </label>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="radio"
+                    name="category"
+                    value="pain"
+                >
+
+                Pain Relief
+
+            </label>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="radio"
+                    name="category"
+                    value="vitamins"
+                >
+
+                Vitamins
+
+            </label>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="radio"
+                    name="category"
+                    value="allergy"
+                >
+
+                Allergy Care
+
+            </label>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="radio"
+                    name="category"
+                    value="health"
+                >
+
+                Healthcare
+
+            </label>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="radio"
+                    name="category"
+                    value="personal"
+                >
+
+                Personal Care
+
+            </label>
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <div class="filter-group">
+
+            <h4>
+                Price Range
+            </h4>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="checkbox"
+                    class="price-filter"
+                    value="under100"
+                >
+
+                Under ₹100
+
+            </label>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="checkbox"
+                    class="price-filter"
+                    value="100-250"
+                >
+
+                ₹100 - ₹250
+
+            </label>
+
+
+            <label class="filter-option">
+
+                <input
+                    type="checkbox"
+                    class="price-filter"
+                    value="above250"
+                >
+
+                Above ₹250
+
+            </label>
+
+        </div>
+
+
+        <!-- HELP -->
+
+        <div class="help-box">
+
+            <div class="help-icon">
+
+                <i class="fa-solid fa-headset"></i>
+
+            </div>
+
+            <h4>
+                Need Help?
+            </h4>
+
+            <p>
+                Our healthcare support team is here for you.
+            </p>
+
+            <a href="index.html#contact">
+
+                Contact Us
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- PRODUCTS -->
+
+    <section class="medicines-content">
+
+
+        <!-- TOOLBAR -->
+
+        <div class="medicine-toolbar">
+
+            <div>
+
+                <strong id="productCount">
+                    12 Products
+                </strong>
+
+                <span>
+                    available
+                </span>
+
+            </div>
+
+
+            <div class="sort-box">
+
+                <label>
+                    Sort by:
+                </label>
+
+
+                <select id="sortProducts">
+
+                    <option value="default">
+                        Recommended
+                    </option>
+
+                    <option value="low">
+                        Price: Low to High
+                    </option>
+
+                    <option value="high">
+                        Price: High to Low
+                    </option>
+
+                    <option value="name">
+                        Name: A-Z
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT GRID -->
+
+        <div
+            class="medicine-product-grid"
+            id="productGrid"
+        >
+
+
+            <!-- 1 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Paracetamol 500mg"
+                data-category="pain"
+                data-price="25"
+            >
+
+                <div class="medicine-product-image">
+
+                    <span class="medicine-badge">
+                        Popular
+                    </span>
+
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual pain-visual">
+
+                        <i class="fa-solid fa-pills"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Pain Relief
+                    </span>
+
+                    <h3>
+                        Paracetamol 500mg
+                    </h3>
+
+                    <p>
+                        Effective relief from pain and fever.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(124)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹35</del>
+
+                            <strong>₹25</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 2 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Vitamin C Tablets"
+                data-category="vitamins"
+                data-price="120"
+            >
+
+                <div class="medicine-product-image">
+
+                    <span class="medicine-badge discount">
+                        20% OFF
+                    </span>
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                    <div class="medicine-visual vitamin-visual">
+
+                        <i class="fa-solid fa-capsules"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Vitamins
+                    </span>
+
+                    <h3>
+                        Vitamin C Tablets
+                    </h3>
+
+                    <p>
+                        Daily vitamin C supplement for adults.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(98)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹150</del>
+
+                            <strong>₹120</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 3 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Cetirizine Tablets"
+                data-category="allergy"
+                data-price="40"
+            >
+
+                <div class="medicine-product-image">
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual allergy-visual">
+
+                        <i class="fa-solid fa-tablets"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Allergy Care
+                    </span>
+
+                    <h3>
+                        Cetirizine Tablets
+                    </h3>
+
+                    <p>
+                        Helps provide relief from allergy symptoms.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(76)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹50</del>
+
+                            <strong>₹40</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 4 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Multivitamin Syrup"
+                data-category="health"
+                data-price="185"
+            >
+
+                <div class="medicine-product-image">
+
+                    <span class="medicine-badge">
+                        Bestseller
+                    </span>
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual health-visual">
+
+                        <i class="fa-solid fa-bottle-droplet"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Healthcare
+                    </span>
+
+                    <h3>
+                        Multivitamin Syrup
+                    </h3>
+
+                    <p>
+                        Daily nutritional support for your health.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(112)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹220</del>
+
+                            <strong>₹185</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 5 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Ibuprofen Tablets"
+                data-category="pain"
+                data-price="75"
+            >
+
+                <div class="medicine-product-image">
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual pain-visual">
+
+                        <i class="fa-solid fa-pills"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Pain Relief
+                    </span>
+
+                    <h3>
+                        Ibuprofen Tablets
+                    </h3>
+
+                    <p>
+                        Commonly used for pain and inflammation.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(65)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹90</del>
+
+                            <strong>₹75</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 6 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Vitamin D3 Capsules"
+                data-category="vitamins"
+                data-price="199"
+            >
+
+                <div class="medicine-product-image">
+
+                    <span class="medicine-badge discount">
+                        15% OFF
+                    </span>
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual vitamin-visual">
+
+                        <i class="fa-solid fa-capsules"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Vitamins
+                    </span>
+
+                    <h3>
+                        Vitamin D3 Capsules
+                    </h3>
+
+                    <p>
+                        Vitamin D supplement for everyday wellness.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(84)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹235</del>
+
+                            <strong>₹199</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 7 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Antiseptic Liquid"
+                data-category="personal"
+                data-price="110"
+            >
+
+                <div class="medicine-product-image">
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual personal-visual">
+
+                        <i class="fa-solid fa-bottle-droplet"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Personal Care
+                    </span>
+
+                    <h3>
+                        Antiseptic Liquid
+                    </h3>
+
+                    <p>
+                        Everyday antiseptic and personal care product.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(54)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹130</del>
+
+                            <strong>₹110</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 8 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Calcium Tablets"
+                data-category="vitamins"
+                data-price="160"
+            >
+
+                <div class="medicine-product-image">
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual vitamin-visual">
+
+                        <i class="fa-solid fa-tablets"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Vitamins
+                    </span>
+
+                    <h3>
+                        Calcium Tablets
+                    </h3>
+
+                    <p>
+                        Calcium supplement for daily nutritional support.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(91)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹190</del>
+
+                            <strong>₹160</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 9 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Cough Syrup"
+                data-category="health"
+                data-price="145"
+            >
+
+                <div class="medicine-product-image">
+
+                    <span class="medicine-badge">
+                        Popular
+                    </span>
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual health-visual">
+
+                        <i class="fa-solid fa-bottle-droplet"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Healthcare
+                    </span>
+
+                    <h3>
+                        Cough Syrup
+                    </h3>
+
+                    <p>
+                        Soothing syrup for cough and throat discomfort.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(103)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹170</del>
+
+                            <strong>₹145</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 10 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Moisturizing Cream"
+                data-category="personal"
+                data-price="249"
+            >
+
+                <div class="medicine-product-image">
+
+                    <span class="medicine-badge discount">
+                        10% OFF
+                    </span>
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual personal-visual">
+
+                        <i class="fa-solid fa-pump-soap"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Personal Care
+                    </span>
+
+                    <h3>
+                        Moisturizing Cream
+                    </h3>
+
+                    <p>
+                        Daily moisturizing care for healthy skin.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(72)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹280</del>
+
+                            <strong>₹249</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 11 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="ORS Electrolyte Powder"
+                data-category="health"
+                data-price="30"
+            >
+
+                <div class="medicine-product-image">
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual health-visual">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Healthcare
+                    </span>
+
+                    <h3>
+                        ORS Electrolyte Powder
+                    </h3>
+
+                    <p>
+                        Helps replace fluids and electrolytes.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(118)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹40</del>
+
+                            <strong>₹30</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 12 -->
+
+            <article
+                class="medicine-product-card"
+                data-name="Digital Thermometer"
+                data-category="health"
+                data-price="299"
+            >
+
+                <div class="medicine-product-image">
+
+                    <span class="medicine-badge">
+                        New
+                    </span>
+
+                    <button
+                        class="medicine-heart"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+
+                    <div class="medicine-visual equipment-visual">
+
+                        <i class="fa-solid fa-temperature-half"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="medicine-product-info">
+
+                    <span class="medicine-category">
+                        Healthcare
+                    </span>
+
+                    <h3>
+                        Digital Thermometer
+                    </h3>
+
+                    <p>
+                        Easy-to-use digital temperature monitor.
+                    </p>
+
+                    <div class="medicine-rating">
+                        <span>★★★★★</span>
+                        <small>(47)</small>
+                    </div>
+
+
+                    <div class="medicine-price-row">
+
+                        <div>
+
+                            <del>₹350</del>
+
+                            <strong>₹299</strong>
+
+                        </div>
+
+
+                        <button
+                            class="medicine-add-btn"
+                            type="button"
+                        >
+
+                            <i class="fa-solid fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+
+            <div class="no-results-icon">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </div>
+
+            <h3>
+                No medicines found
+            </h3>
+
+            <p>
+                Try searching for another medicine or category.
+            </p>
+
+        </div>
+
+
+    </section>
+
+</div>
+```
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+```
+<div class="container footer-grid">
+
+
+    <div class="footer-brand">
+
+        <a href="index.html" class="logo footer-logo">
+
+            <span class="logo-icon">
+
+                <i class="fa-solid fa-plus"></i>
+
+            </span>
+
+            <span>
+
+                <strong>MediCare</strong>
+
+                <small>PHARMACY</small>
+
+            </span>
+
+        </a>
+
+
+        <p>
+            Your trusted destination for medicines
+            and healthcare essentials.
+        </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h3>
+            Quick Links
+        </h3>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="medicines.html">
+            Medicines
+        </a>
+
+        <a href="cart.html">
+            My Cart
+        </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h3>
+            Customer Care
+        </h3>
+
+        <a href="#">
+            My Account
+        </a>
+
+        <a href="#">
+            My Orders
+        </a>
+
+        <a href="#">
+            Privacy Policy
+        </a>
+
+    </div>
+
+
+    <div class="footer-column contact-column">
+
+        <h3>
+            Contact Us
+        </h3>
+
+        <p>
+            <i class="fa-solid fa-location-dot"></i>
+            Pune, Maharashtra, India
+        </p>
+
+        <p>
+            <i class="fa-solid fa-phone"></i>
+            +91 98765 43210
+        </p>
+
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            support@medicare.com
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+    <div class="container">
+
+        <p>
+            © 2026 MediCare Pharmacy. All rights reserved.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</footer>
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("medicareCart")
+    ) || [];
+
+
+/* =====================================================
+   UPDATE HEADER CART
+===================================================== */
+
+function updateCartCount() {
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        total += item.quantity;
+
+    });
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = total;
+
+}
+
+updateCartCount();
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+document.querySelectorAll(
+    ".medicine-add-btn"
+).forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+
+            const card =
+                this.closest(
+                    ".medicine-product-card"
+                );
+
+
+            const name =
+                card.dataset.name;
+
+
+            const price =
+                Number(
+                    card.dataset.price
+                );
+
+
+            const category =
+                card.querySelector(
+                    ".medicine-category"
+                ).textContent.trim();
+
+
+            /* CHECK EXISTING PRODUCT */
+
+            const existingItem =
+                cart.find(
+                    item =>
+                    item.name === name
+                );
+
+
+            if (existingItem) {
+
+                existingItem.quantity++;
+
+            } else {
+
+                cart.push({
+
+                    name: name,
+
+                    price: price,
+
+                    category: category,
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+            /* SAVE */
+
+            localStorage.setItem(
+                "medicareCart",
+                JSON.stringify(cart)
+            );
+
+
+            /* UPDATE COUNT */
+
+            updateCartCount();
+
+
+            /* BUTTON */
+
+            const oldText =
+                this.innerHTML;
+
+
+            this.innerHTML =
+                '<i class="fa-solid fa-check"></i> Added';
+
+
+            this.style.background =
+                "#10a48f";
+
+            this.style.color =
+                "#ffffff";
+
+
+            setTimeout(() => {
+
+                this.innerHTML =
+                    oldText;
+
+                this.style.background =
+                    "";
+
+                this.style.color =
+                    "";
+
+            }, 1000);
+
+        }
+    );
+
+});
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+function filterProducts() {
+
+    const search =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+    const selectedCategory =
+        document.querySelector(
+            'input[name="category"]:checked'
+        ).value;
+
+
+    const products =
+        document.querySelectorAll(
+            ".medicine-product-card"
+        );
+
+
+    let visible = 0;
+
+
+    products.forEach(card => {
+
+        const name =
+            card.dataset.name
+                .toLowerCase();
+
+
+        const category =
+            card.dataset.category;
+
+
+        const searchMatch =
+            name.includes(search);
+
+
+        const categoryMatch =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+
+        if (
+            searchMatch &&
+            categoryMatch
+        ) {
+
+            card.style.display = "";
+
+            visible++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "productCount"
+    ).textContent =
+        visible + " Products";
+
+
+    document.getElementById(
+        "noResults"
+    ).style.display =
+        visible === 0
+            ? "block"
+            : "none";
+
+}
+
+
+searchInput.addEventListener(
+    "input",
+    filterProducts
+);
+
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+document.querySelectorAll(
+    'input[name="category"]'
+).forEach(radio => {
+
+    radio.addEventListener(
+        "change",
+        filterProducts
+    );
+
+});
+
+
+
+/* =====================================================
+   SORT
+===================================================== */
+
+document.getElementById(
+    "sortProducts"
+).addEventListener(
+    "change",
+    function () {
+
+
+        const grid =
+            document.getElementById(
+                "productGrid"
+            );
+
+
+        const cards =
+            Array.from(
+                grid.querySelectorAll(
+                    ".medicine-product-card"
+                )
+            );
+
+
+        if (this.value === "low") {
+
+            cards.sort(
+                (a, b) =>
+                Number(a.dataset.price) -
+                Number(b.dataset.price)
+            );
+
+        }
+
+
+        if (this.value === "high") {
+
+            cards.sort(
+                (a, b) =>
+                Number(b.dataset.price) -
+                Number(a.dataset.price)
+            );
+
+        }
+
+
+        if (this.value === "name") {
+
+            cards.sort(
+                (a, b) =>
+                a.dataset.name.localeCompare(
+                    b.dataset.name
+                )
+            );
+
+        }
+
+
+        cards.forEach(card => {
+
+            grid.appendChild(card);
+
+        });
+
+    }
+);
+
+
+
+/* =====================================================
+   CLEAR FILTERS
+===================================================== */
+
+document.getElementById(
+    "clearFilters"
+).addEventListener(
+    "click",
+    function () {
+
+
+        searchInput.value = "";
+
+
+        document.querySelector(
+            'input[name="category"][value="all"]'
+        ).checked = true;
+
+
+        document.querySelectorAll(
+            ".price-filter"
+        ).forEach(box => {
+
+            box.checked = false;
+
+        });
+
+
+        document.getElementById(
+            "sortProducts"
+        ).value = "default";
+
+
+        filterProducts();
+
+    }
+);
+
+
+
+/* =====================================================
+   HEART BUTTON
+===================================================== */
+
+document.querySelectorAll(
+    ".medicine-heart"
+).forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+
+            const icon =
+                this.querySelector("i");
+
+
+            if (
+                icon.classList.contains(
+                    "fa-regular"
+                )
+            ) {
+
+                icon.classList.remove(
+                    "fa-regular"
+                );
+
+                icon.classList.add(
+                    "fa-solid"
+                );
+
+                this.style.color =
+                    "#f45d48";
+
+            } else {
+
+                icon.classList.remove(
+                    "fa-solid"
+                );
+
+                icon.classList.add(
+                    "fa-regular"
+                );
+
+                this.style.color =
+                    "";
+
+            }
+
+        }
+    );
+
+});
+
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
+
+
+const mainNav =
+    document.getElementById(
+        "mainNav"
+    );
+
+
+if (menuBtn) {
+
+    menuBtn.addEventListener(
+        "click",
+        function () {
+
+            mainNav.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+</script>
+
+</body>
+</html>

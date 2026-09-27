@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MediCare Pharmacy - Your trusted online pharmacy">
+    <title>MediCare Pharmacy</title>
+
+```
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+```
+
+</head>
+
+<body>
+
+```
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="container top-content">
+        <span><i class="fa-solid fa-truck"></i> Fast & Safe Delivery</span>
+        <span><i class="fa-solid fa-phone"></i> Need Help? +91 98765 43210</span>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav-container">
+
+        <a href="#" class="logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-plus"></i>
+            </span>
+            <span>
+                <strong>MediCare</strong>
+                <small>PHARMACY</small>
+            </span>
+        </a>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search medicines, health products...">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <div class="nav-actions">
+            <a href="#" class="action-item">
+                <i class="fa-regular fa-user"></i>
+                <span>Account</span>
+            </a>
+
+            <a href="#" class="action-item cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Cart</span>
+                <b>0</b>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#medicines">Medicines</a>
+            <a href="#categories">Categories</a>
+            <a href="#offers">Offers</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+</header>
+
+
+<!-- HERO SECTION -->
+<main>
+
+    <section class="hero">
+        <div class="container hero-content">
+
+            <div class="hero-text">
+                <span class="hero-tag">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    Trusted Healthcare
+                </span>
+
+                <h1>
+                    Your Health,<br>
+                    <span>Our Priority.</span>
+                </h1>
+
+                <p>
+                    Quality medicines and healthcare products
+                    delivered safely to your doorstep.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#medicines" class="btn primary-btn">
+                        Shop Medicines
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="#categories" class="btn secondary-btn">
+                        Explore Categories
+                    </a>
+                </div>
+
+                <div class="trust-points">
+                    <span>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Genuine Medicines
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Secure Shopping
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Fast Delivery
+                    </span>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="image-circle">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+
+                <div class="floating-card card-one">
+                    <i class="fa-solid fa-pills"></i>
+                    <div>
+                        <strong>500+</strong>
+                        <small>Medicines</small>
+                    </div>
+                </div>
+
+                <div class="floating-card card-two">
+                    <i class="fa-solid fa-star"></i>
+                    <div>
+                        <strong>4.9/5</strong>
+                        <small>Customer Rating</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="container features-grid">
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick doorstep delivery</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h3>100% Genuine</h3>
+                    <p>Authentic medicines</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h3>24/7 Support</h3>
+                    <p>We're here to help</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                    <h3>Secure Payment</h3>
+                    <p>Safe & secure checkout</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="section" id="categories">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">SHOP BY CATEGORY</span>
+                    <h2>Healthcare Essentials</h2>
+                </div>
+
+                <a href="#" class="view-all">
+                    View All <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="category-grid">
+
+                <a href="#" class="category-card">
+                    <div class="category-icon medicine-icon">
+                        <i class="fa-solid fa-pills"></i>
+                    </div>
+                    <h3>Medicines</h3>
+                    <p>200+ Products</p>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-icon vitamin-icon">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
+                    <h3>Vitamins</h3>
+                    <p>100+ Products</p>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-icon personal-icon">
+                        <i class="fa-solid fa-pump-soap"></i>
+                    </div>
+                    <h3>Personal Care</h3>
+                    <p>150+ Products</p>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-icon baby-icon">
+                        <i class="fa-solid fa-baby"></i>
+                    </div>
+                    <h3>Baby Care</h3>
+                    <p>80+ Products</p>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-icon fitness-icon">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <h3>Health & Fitness</h3>
+                    <p>90+ Products</p>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-icon equipment-icon">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+                    <h3>Medical Equipment</h3>
+                    <p>70+ Products</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PRODUCTS -->
+    <section class="section products-section" id="medicines">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">POPULAR PRODUCTS</span>
+                    <h2>Featured Medicines</h2>
+                </div>
+
+                <a href="#" class="view-all">
+                    View All <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="product-grid">
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <span class="product-tag">Popular</span>
+                        <button class="heart">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <div class="medicine-placeholder">
+                            <i class="fa-solid fa-pills"></i>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-category">Pain Relief</span>
+                        <h3>Paracetamol 500mg</h3>
+                        <p class="product-description">
+                            Effective relief from pain and fever.
+                        </p>
+
+                        <div class="rating">
+                            <span>★★★★★</span>
+                            <small>(124)</small>
+                        </div>
+
+                        <div class="product-bottom">
+                            <div>
+                                <span class="old-price">₹35</span>
+                                <strong>₹25</strong>
+                            </div>
+
+                            <button class="add-btn">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <span class="product-tag discount">20% OFF</span>
+                        <button class="heart">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <div class="medicine-placeholder vitamin">
+                            <i class="fa-solid fa-capsules"></i>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-category">Vitamins</span>
+                        <h3>Vitamin C Tablets</h3>
+                        <p class="product-description">
+                            Daily vitamin C supplement for adults.
+                        </p>
+
+                        <div class="rating">
+                            <span>★★★★★</span>
+                            <small>(98)</small>
+                        </div>
+
+                        <div class="product-bottom">
+                            <div>
+                                <span class="old-price">₹150</span>
+                                <strong>₹120</strong>
+                            </div>
+
+                            <button class="add-btn">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <button class="heart">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <div class="medicine-placeholder allergy">
+                            <i class="fa-solid fa-tablets"></i>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-category">Allergy Care</span>
+                        <h3>Cetirizine Tablets</h3>
+                        <p class="product-description">
+                            Helps provide relief from allergy symptoms.
+                        </p>
+
+                        <div class="rating">
+                            <span>★★★★★</span>
+                            <small>(76)</small>
+                        </div>
+
+                        <div class="product-bottom">
+                            <div>
+                                <span class="old-price">₹50</span>
+                                <strong>₹40</strong>
+                            </div>
+
+                            <button class="add-btn">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <span class="product-tag">Bestseller</span>
+                        <button class="heart">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <div class="medicine-placeholder health">
+                            <i class="fa-solid fa-bottle-droplet"></i>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-category">Healthcare</span>
+                        <h3>Multivitamin Syrup</h3>
+                        <p class="product-description">
+                            Daily nutritional support for your health.
+                        </p>
+
+                        <div class="rating">
+                            <span>★★★★★</span>
+                            <small>(112)</small>
+                        </div>
+
+                        <div class="product-bottom">
+                            <div>
+                                <span class="old-price">₹220</span>
+                                <strong>₹185</strong>
+                            </div>
+
+                            <button class="add-btn">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- OFFER -->
+    <section class="offer-section" id="offers">
+        <div class="container">
+
+            <div class="offer-box">
+
+                <div class="offer-content">
+                    <span>HEALTHCARE OFFER</span>
+
+                    <h2>Save More on<br>Healthcare Essentials</h2>
+
+                    <p>
+                        Get attractive discounts on selected
+                        medicines and healthcare products.
+                    </p>
+
+                    <a href="#medicines" class="btn offer-btn">
+                        Shop Now
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="offer-icon">
+                    <i class="fa-solid fa-prescription-bottle-medical"></i>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section about-section" id="about">
+        <div class="container about-grid">
+
+            <div class="about-visual">
+                <div class="about-main-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div class="about-stat">
+                    <strong>10K+</strong>
+                    <span>Happy Customers</span>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <span class="section-label">ABOUT MEDICARE</span>
+
+                <h2>Your Trusted Partner in Healthcare</h2>
+
+                <p>
+                    MediCare Pharmacy is designed to make healthcare
+                    simple, convenient and accessible. We provide
+                    a wide range of medicines and healthcare products
+                    through an easy-to-use digital platform.
+                </p>
+
+                <p>
+                    Our focus is on quality, convenience, secure
+                    shopping and reliable healthcare support.
+                </p>
+
+                <div class="about-points">
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Genuine healthcare products
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Easy and convenient shopping
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Customer-focused service
+                    </div>
+                </div>
+
+                <a href="#contact" class="btn primary-btn">
+                    Contact Us
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div class="container newsletter-box">
+
+            <div>
+                <span class="section-label">STAY UPDATED</span>
+                <h2>Get Healthcare Updates</h2>
+                <p>Subscribe for health tips and latest offers.</p>
+            </div>
+
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+
+        </div>
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+            <a href="#" class="logo footer-logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+                <span>
+                    <strong>MediCare</strong>
+                    <small>PHARMACY</small>
+                </span>
+            </a>
+
+            <p>
+                Your trusted destination for medicines
+                and healthcare essentials.
+            </p>
+
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <a href="#">Home</a>
+            <a href="#medicines">Medicines</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About Us</a>
+        </div>
+
+
+        <div class="footer-column">
+            <h3>Customer Care</h3>
+            <a href="#">My Account</a>
+            <a href="#">My Orders</a>
+            <a href="#">Shipping Policy</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+
+        <div class="footer-column contact-column">
+            <h3>Contact Us</h3>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Pune, Maharashtra, India
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +91 98765 43210
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                support@medicare.com
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© 2026 MediCare Pharmacy. All rights reserved.</p>
+        </div>
+    </div>
+
+</footer>
+
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mainNav = document.getElementById("mainNav");
+
+    menuBtn.addEventListener("click", function () {
+        mainNav.classList.toggle("show");
+    });
+
+    document.querySelectorAll(".main-nav a").forEach(link => {
+        link.addEventListener("click", () => {
+            mainNav.classList.remove("show");
+        });
+    });
+</script>
+```
+
+</body>
+</html>

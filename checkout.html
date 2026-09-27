@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | MediCare Pharmacy</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+    /* =========================================
+       CHECKOUT PAGE
+    ========================================= */
+
+    .checkout-page {
+        background: #f7faf9;
+        padding: 40px 0 70px;
+        min-height: 70vh;
+    }
+
+
+    .checkout-title {
+        margin-bottom: 28px;
+    }
+
+    .checkout-title h1 {
+        color: #083f3a;
+        font-size: 32px;
+        margin-bottom: 7px;
+    }
+
+    .checkout-title p {
+        color: #778683;
+        font-size: 11px;
+    }
+
+
+    .checkout-layout {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 25px;
+        align-items: start;
+    }
+
+
+    /* =========================================
+       FORM BOX
+    ========================================= */
+
+    .checkout-box {
+        background: white;
+        border: 1px solid #e1ebe8;
+        border-radius: 15px;
+        padding: 24px;
+        margin-bottom: 20px;
+    }
+
+
+    .checkout-box-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #edf2f1;
+    }
+
+
+    .checkout-box-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+        background: #e8f8f5;
+        color: #10a48f;
+        display: grid;
+        place-items: center;
+    }
+
+
+    .checkout-box-header h2 {
+        color: #083f3a;
+        font-size: 15px;
+    }
+
+
+    .checkout-box-header p {
+        color: #879390;
+        font-size: 9px;
+        margin-top: 3px;
+    }
+
+
+    /* =========================================
+       FORM
+    ========================================= */
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+
+    .form-group.full {
+        grid-column: 1 / -1;
+    }
+
+
+    .form-group label {
+        color: #38534f;
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+
+    .required {
+        color: #e74c3c;
+    }
+
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+
+        width: 100%;
+
+        border: 1px solid #dce8e5;
+
+        border-radius: 8px;
+
+        padding: 11px 12px;
+
+        color: #304b47;
+
+        background: #fff;
+
+        font-family: inherit;
+
+        font-size: 11px;
+
+        outline: none;
+
+        transition: 0.2s;
+
+    }
+
+
+    .form-group textarea {
+        min-height: 85px;
+        resize: vertical;
+    }
+
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        border-color: #10a48f;
+        box-shadow: 0 0 0 3px rgba(16,164,143,0.08);
+    }
+
+
+    /* =========================================
+       PAYMENT
+    ========================================= */
+
+    .payment-option {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        border: 1px solid #dfeae7;
+
+        border-radius: 10px;
+
+        padding: 14px;
+
+        margin-bottom: 10px;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+
+    }
+
+
+    .payment-option:hover {
+        border-color: #10a48f;
+        background: #f7fcfb;
+    }
+
+
+    .payment-option.selected {
+        border-color: #10a48f;
+        background: #f0faf8;
+    }
+
+
+    .payment-option input {
+        accent-color: #10a48f;
+    }
+
+
+    .payment-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        border-radius: 8px;
+
+        background: #e9f8f5;
+
+        color: #10a48f;
+
+        display: grid;
+
+        place-items: center;
+
+    }
+
+
+    .payment-info strong {
+        display: block;
+        color: #234440;
+        font-size: 11px;
+    }
+
+
+    .payment-info span {
+        display: block;
+        color: #899592;
+        font-size: 9px;
+        margin-top: 3px;
+    }
+
+
+    /* =========================================
+       ORDER SUMMARY
+    ========================================= */
+
+    .checkout-summary {
+
+        background: white;
+
+        border: 1px solid #e1ebe8;
+
+        border-radius: 15px;
+
+        padding: 22px;
+
+        position: sticky;
+
+        top: 20px;
+
+    }
+
+
+    .checkout-summary h2 {
+
+        color: #083f3a;
+
+        font-size: 16px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .checkout-items {
+
+        max-height: 300px;
+
+        overflow-y: auto;
+
+        padding-right: 3px;
+
+    }
+
+
+    .checkout-item {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 12px;
+
+        padding: 11px 0;
+
+        border-bottom: 1px solid #edf2f1;
+
+    }
+
+
+    .checkout-item-name {
+
+        color: #3c5652;
+
+        font-size: 10px;
+
+    }
+
+
+    .checkout-item-quantity {
+
+        color: #8b9694;
+
+        font-size: 9px;
+
+        margin-top: 3px;
+
+    }
+
+
+    .checkout-item-price {
+
+        color: #083f3a;
+
+        font-size: 11px;
+
+        font-weight: 700;
+
+        white-space: nowrap;
+
+    }
+
+
+    .summary-row {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        color: #788683;
+
+        font-size: 10px;
+
+        margin: 13px 0;
+
+    }
+
+
+    .summary-row strong {
+        color: #304b47;
+    }
+
+
+    .summary-divider {
+
+        height: 1px;
+
+        background: #e7efed;
+
+        margin: 17px 0;
+
+    }
+
+
+    .summary-total {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+    }
+
+
+    .summary-total span {
+
+        color: #083f3a;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+    }
+
+
+    .summary-total strong {
+
+        color: #10a48f;
+
+        font-size: 21px;
+
+    }
+
+
+    /* =========================================
+       PLACE ORDER
+    ========================================= */
+
+    .place-order-btn {
+
+        width: 100%;
+
+        background: #10a48f;
+
+        color: white;
+
+        border-radius: 8px;
+
+        padding: 14px;
+
+        margin-top: 20px;
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+
+    }
+
+
+    .place-order-btn:hover {
+        background: #087f71;
+    }
+
+
+    .secure-note {
+
+        text-align: center;
+
+        color: #899592;
+
+        font-size: 9px;
+
+        margin-top: 14px;
+
+    }
+
+
+    .secure-note i {
+        color: #10a48f;
+        margin-right: 4px;
+    }
+
+
+    /* =========================================
+       EMPTY CHECKOUT
+    ========================================= */
+
+    .checkout-empty {
+
+        display: none;
+
+        text-align: center;
+
+        background: white;
+
+        border: 1px solid #e1ebe8;
+
+        border-radius: 15px;
+
+        padding: 70px 20px;
+
+    }
+
+
+    .checkout-empty-icon {
+
+        width: 70px;
+
+        height: 70px;
+
+        border-radius: 50%;
+
+        background: #eaf8f5;
+
+        color: #10a48f;
+
+        display: grid;
+
+        place-items: center;
+
+        margin: auto auto 15px;
+
+        font-size: 25px;
+
+    }
+
+
+    .checkout-empty h2 {
+        color: #083f3a;
+        font-size: 19px;
+    }
+
+
+    .checkout-empty p {
+
+        color: #7c8986;
+
+        font-size: 10px;
+
+        margin: 7px 0 18px;
+
+    }
+
+
+    .shop-btn {
+
+        display: inline-block;
+
+        background: #10a48f;
+
+        color: white;
+
+        padding: 11px 20px;
+
+        border-radius: 8px;
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+    }
+
+
+    /* =========================================
+       SUCCESS MESSAGE
+    ========================================= */
+
+    .success-message {
+
+        display: none;
+
+        text-align: center;
+
+        background: white;
+
+        border: 1px solid #d9ebe6;
+
+        border-radius: 15px;
+
+        padding: 65px 25px;
+
+    }
+
+
+    .success-icon {
+
+        width: 75px;
+
+        height: 75px;
+
+        border-radius: 50%;
+
+        background: #e7f8f3;
+
+        color: #10a48f;
+
+        display: grid;
+
+        place-items: center;
+
+        margin: 0 auto 18px;
+
+        font-size: 30px;
+
+    }
+
+
+    .success-message h2 {
+
+        color: #083f3a;
+
+        font-size: 24px;
+
+    }
+
+
+    .success-message p {
+
+        color: #788683;
+
+        font-size: 11px;
+
+        margin: 8px 0 20px;
+
+    }
+
+
+    .order-number {
+
+        display: inline-block;
+
+        background: #f1f8f6;
+
+        color: #10a48f;
+
+        padding: 9px 15px;
+
+        border-radius: 7px;
+
+        font-size: 11px;
+
+        font-weight: 700;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 850px) {
+
+        .checkout-layout {
+
+            grid-template-columns: 1fr;
+
+        }
+
+
+        .checkout-summary {
+
+            position: static;
+
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .checkout-page {
+
+            padding: 30px 0 55px;
+
+        }
+
+
+        .checkout-title h1 {
+
+            font-size: 27px;
+
+        }
+
+
+        .form-grid {
+
+            grid-template-columns: 1fr;
+
+        }
+
+
+        .form-group.full {
+
+            grid-column: auto;
+
+        }
+
+
+        .checkout-box {
+
+            padding: 18px;
+
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- =========================================
+     TOP BAR
+========================================= -->
+
+<div class="top-bar">
+
+```
+<div class="container top-content">
+
+    <span>
+        <i class="fa-solid fa-truck"></i>
+        Fast & Safe Delivery
+    </span>
+
+    <span>
+        <i class="fa-solid fa-phone"></i>
+        Need Help? +91 98765 43210
+    </span>
+
+</div>
+```
+
+</div>
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+```
+<div class="container nav-container">
+
+
+    <a href="index.html" class="logo">
+
+        <span class="logo-icon">
+
+            <i class="fa-solid fa-plus"></i>
+
+        </span>
+
+        <span>
+
+            <strong>MediCare</strong>
+
+            <small>PHARMACY</small>
+
+        </span>
+
+    </a>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Search medicines, health products..."
+        >
+
+        <button type="button">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+        </button>
+
+    </div>
+
+
+    <div class="nav-actions">
+
+        <a href="#" class="action-item">
+
+            <i class="fa-regular fa-user"></i>
+
+            <span>Account</span>
+
+        </a>
+
+
+        <a href="cart.html" class="action-item cart">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span>Cart</span>
+
+            <b id="headerCartCount">0</b>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<nav class="main-nav" id="mainNav">
+
+    <div class="container nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="medicines.html">
+            Medicines
+        </a>
+
+        <a href="medicines.html">
+            Categories
+        </a>
+
+        <a href="medicines.html">
+            Offers
+        </a>
+
+        <a href="index.html#about">
+            About Us
+        </a>
+
+        <a href="index.html#contact">
+            Contact
+        </a>
+
+    </div>
+
+</nav>
+```
+
+</header>
+
+<!-- =========================================
+     CHECKOUT
+========================================= -->
+
+<main class="checkout-page">
+
+```
+<div class="container">
+
+
+    <div class="checkout-title">
+
+        <h1>
+            Checkout
+        </h1>
+
+        <p>
+            Complete your details and place your order.
+        </p>
+
+    </div>
+
+
+    <!-- EMPTY CART -->
+
+    <div
+        class="checkout-empty"
+        id="checkoutEmpty"
+    >
+
+        <div class="checkout-empty-icon">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+        </div>
+
+        <h2>
+            Your cart is empty
+        </h2>
+
+        <p>
+            Please add a medicine before proceeding to checkout.
+        </p>
+
+        <a
+            href="medicines.html"
+            class="shop-btn"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Browse Medicines
+
+        </a>
+
+    </div>
+
+
+    <!-- SUCCESS -->
+
+    <div
+        class="success-message"
+        id="successMessage"
+    >
+
+        <div class="success-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+
+        <h2>
+            Order Placed Successfully!
+        </h2>
+
+        <p>
+            Thank you for choosing MediCare Pharmacy.
+            Your order has been received.
+        </p>
+
+        <div class="order-number">
+            Order ID: <span id="orderNumber"></span>
+        </div>
+
+        <br>
+
+        <a
+            href="medicines.html"
+            class="shop-btn"
+        >
+
+            Continue Shopping
+
+        </a>
+
+    </div>
+
+
+    <!-- MAIN CHECKOUT -->
+
+    <div
+        class="checkout-layout"
+        id="checkoutLayout"
+    >
+
+
+        <!-- LEFT SIDE -->
+
+        <section>
+
+
+            <!-- CUSTOMER DETAILS -->
+
+            <div class="checkout-box">
+
+                <div class="checkout-box-header">
+
+                    <div class="checkout-box-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Customer Information
+                        </h2>
+
+                        <p>
+                            Enter your contact details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Number
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="Enter mobile number"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="customerEmail"
+                            placeholder="Enter email address"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            City
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerCity"
+                            placeholder="Enter city"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- DELIVERY ADDRESS -->
+
+            <div class="checkout-box">
+
+                <div class="checkout-box-header">
+
+                    <div class="checkout-box-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Delivery Address
+                        </h2>
+
+                        <p>
+                            Where should we deliver your order?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Complete Address
+                            <span class="required">*</span>
+                        </label>
+
+                        <textarea
+                            id="customerAddress"
+                            placeholder="House/Flat No., Building, Street, Area..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            State
+                            <span class="required">*</span>
+                        </label>
+
+                        <select id="customerState">
+
+                            <option value="">
+                                Select State
+                            </option>
+
+                            <option value="Maharashtra">
+                                Maharashtra
+                            </option>
+
+                            <option value="Gujarat">
+                                Gujarat
+                            </option>
+
+                            <option value="Karnataka">
+                                Karnataka
+                            </option>
+
+                            <option value="Goa">
+                                Goa
+                            </option>
+
+                            <option value="Delhi">
+                                Delhi
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            PIN Code
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerPincode"
+                            placeholder="Enter PIN code"
+                            maxlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="checkout-box">
+
+                <div class="checkout-box-header">
+
+                    <div class="checkout-box-icon">
+
+                        <i class="fa-solid fa-credit-card"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Payment Method
+                        </h2>
+
+                        <p>
+                            Select your preferred payment option.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label
+                    class="payment-option selected"
+                    id="codOption"
+                >
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="cod"
+                        checked
+                    >
+
+                    <div class="payment-icon">
+
+                        <i class="fa-solid fa-money-bill-wave"></i>
+
+                    </div>
+
+                    <div class="payment-info">
+
+                        <strong>
+                            Cash on Delivery
+                        </strong>
+
+                        <span>
+                            Pay when your order arrives.
+                        </span>
+
+                    </div>
+
+                </label>
+
+
+                <label
+                    class="payment-option"
+                    id="upiOption"
+                >
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="upi"
+                    >
+
+                    <div class="payment-icon">
+
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+
+                    </div>
+
+                    <div class="payment-info">
+
+                        <strong>
+                            UPI
+                        </strong>
+
+                        <span>
+                            UPI payment interface demo.
+                        </span>
+
+                    </div>
+
+                </label>
+
+
+                <label
+                    class="payment-option"
+                    id="cardOption"
+                >
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="card"
+                    >
+
+                    <div class="payment-icon">
+
+                        <i class="fa-solid fa-credit-card"></i>
+
+                    </div>
+
+                    <div class="payment-info">
+
+                        <strong>
+                            Card Payment
+                        </strong>
+
+                        <span>
+                            Secure card payment interface demo.
+                        </span>
+
+                    </div>
+
+                </label>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+
+        <aside class="checkout-summary">
+
+
+            <h2>
+                Order Summary
+            </h2>
+
+
+            <div
+                class="checkout-items"
+                id="checkoutItems"
+            >
+
+                <!-- Items added by JavaScript -->
+
+            </div>
+
+
+            <div class="summary-divider"></div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <strong id="checkoutSubtotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong id="checkoutDelivery">
+                    FREE
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Discount
+                </span>
+
+                <strong id="checkoutDiscount">
+                    - ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-divider"></div>
+
+
+            <div class="summary-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="checkoutTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <button
+                class="place-order-btn"
+                id="placeOrderBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-check"></i>
+
+                Place Order
+
+            </button>
+
+
+            <div class="secure-note">
+
+                <i class="fa-solid fa-lock"></i>
+
+                Your information is safe and secure.
+
+            </div>
+
+
+        </aside>
+
+    </div>
+
+</div>
+```
+
+</main>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+```
+<div class="container footer-grid">
+
+
+    <div class="footer-brand">
+
+        <a href="index.html" class="logo footer-logo">
+
+            <span class="logo-icon">
+
+                <i class="fa-solid fa-plus"></i>
+
+            </span>
+
+            <span>
+
+                <strong>MediCare</strong>
+
+                <small>PHARMACY</small>
+
+            </span>
+
+        </a>
+
+
+        <p>
+            Your trusted destination for medicines
+            and healthcare essentials.
+        </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h3>
+            Quick Links
+        </h3>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="medicines.html">
+            Medicines
+        </a>
+
+        <a href="cart.html">
+            My Cart
+        </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h3>
+            Customer Care
+        </h3>
+
+        <a href="#">
+            My Account
+        </a>
+
+        <a href="#">
+            My Orders
+        </a>
+
+        <a href="#">
+            Privacy Policy
+        </a>
+
+    </div>
+
+
+    <div class="footer-column contact-column">
+
+        <h3>
+            Contact Us
+        </h3>
+
+        <p>
+            <i class="fa-solid fa-location-dot"></i>
+            Pune, Maharashtra, India
+        </p>
+
+        <p>
+            <i class="fa-solid fa-phone"></i>
+            +91 98765 43210
+        </p>
+
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            support@medicare.com
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+    <div class="container">
+
+        <p>
+            © 2026 MediCare Pharmacy. All rights reserved.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</footer>
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   GET CART
+========================================= */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("medicareCart")
+    ) || [];
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const checkoutEmpty =
+    document.getElementById("checkoutEmpty");
+
+const checkoutLayout =
+    document.getElementById("checkoutLayout");
+
+const successMessage =
+    document.getElementById("successMessage");
+
+const checkoutItems =
+    document.getElementById("checkoutItems");
+
+
+/* =========================================
+   DISPLAY CART
+========================================= */
+
+function loadCheckout() {
+
+    if (cart.length === 0) {
+
+        checkoutEmpty.style.display = "block";
+
+        checkoutLayout.style.display = "none";
+
+        return;
+
+    }
+
+
+    checkoutEmpty.style.display = "none";
+
+    checkoutLayout.style.display = "grid";
+
+
+    checkoutItems.innerHTML = "";
+
+
+    let subtotal = 0;
+
+    let totalItems = 0;
+
+
+    cart.forEach(function(item) {
+
+        const itemTotal =
+            Number(item.price) *
+            Number(item.quantity);
+
+
+        subtotal += itemTotal;
+
+        totalItems += Number(item.quantity);
+
+
+        const itemHTML = `
+
+            <div class="checkout-item">
+
+                <div>
+
+                    <div class="checkout-item-name">
+                        ${item.name}
+                    </div>
+
+                    <div class="checkout-item-quantity">
+                        Quantity: ${item.quantity}
+                    </div>
+
+                </div>
+
+                <div class="checkout-item-price">
+                    ₹${itemTotal}
+                </div>
+
+            </div>
+
+        `;
+
+
+        checkoutItems.innerHTML += itemHTML;
+
+    });
+
+
+    /* DELIVERY */
+
+    let delivery = 0;
+
+
+    if (subtotal > 0 && subtotal < 499) {
+
+        delivery = 40;
+
+    }
+
+
+    /* DISCOUNT */
+
+    let discount = 0;
+
+
+    if (subtotal >= 1000) {
+
+        discount =
+            Math.round(subtotal * 0.05);
+
+    }
+
+
+    /* TOTAL */
+
+    const total =
+        subtotal +
+        delivery -
+        discount;
+
+
+    document.getElementById(
+        "checkoutSubtotal"
+    ).textContent =
+        "₹" + subtotal;
+
+
+    document.getElementById(
+        "checkoutDelivery"
+    ).textContent =
+        delivery === 0
+            ? "FREE"
+            : "₹" + delivery;
+
+
+    document.getElementById(
+        "checkoutDiscount"
+    ).textContent =
+        "- ₹" + discount;
+
+
+    document.getElementById(
+        "checkoutTotal"
+    ).textContent =
+        "₹" + total;
+
+
+    document.getElementById(
+        "headerCartCount"
+    ).textContent =
+        totalItems;
+
+}
+
+
+loadCheckout();
+
+
+/* =========================================
+   PAYMENT OPTION
+========================================= */
+
+document.querySelectorAll(
+    ".payment-option"
+).forEach(function(option) {
+
+    option.addEventListener(
+        "click",
+        function() {
+
+
+            document.querySelectorAll(
+                ".payment-option"
+            ).forEach(function(item) {
+
+                item.classList.remove(
+                    "selected"
+                );
+
+            });
+
+
+            this.classList.add(
+                "selected"
+            );
+
+
+            const radio =
+                this.querySelector(
+                    "input[type='radio']"
+                );
+
+
+            radio.checked = true;
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   PLACE ORDER
+========================================= */
+
+document.getElementById(
+    "placeOrderBtn"
+).addEventListener(
+    "click",
+    function() {
+
+
+        /* GET FORM VALUES */
+
+        const name =
+            document.getElementById(
+                "customerName"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "customerPhone"
+            ).value.trim();
+
+
+        const city =
+            document.getElementById(
+                "customerCity"
+            ).value.trim();
+
+
+        const address =
+            document.getElementById(
+                "customerAddress"
+            ).value.trim();
+
+
+        const state =
+            document.getElementById(
+                "customerState"
+            ).value;
+
+
+        const pincode =
+            document.getElementById(
+                "customerPincode"
+            ).value.trim();
+
+
+        /* VALIDATION */
+
+        if (!name) {
+
+            alert(
+                "Please enter your full name."
+            );
+
+            return;
+
+        }
+
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+
+            alert(
+                "Please enter a valid 10-digit mobile number."
+            );
+
+            return;
+
+        }
+
+
+        if (!city) {
+
+            alert(
+                "Please enter your city."
+            );
+
+            return;
+
+        }
+
+
+        if (!address) {
+
+            alert(
+                "Please enter your complete address."
+            );
+
+            return;
+
+        }
+
+
+        if (!state) {
+
+            alert(
+                "Please select your state."
+            );
+
+            return;
+
+        }
+
+
+        if (!/^[0-9]{6}$/.test(pincode)) {
+
+            alert(
+                "Please enter a valid 6-digit PIN code."
+            );
+
+            return;
+
+        }
+
+
+        /* PAYMENT */
+
+        const payment =
+            document.querySelector(
+                'input[name="payment"]:checked'
+            ).value;
+
+
+        /* DEMO PAYMENT MESSAGE */
+
+        if (payment === "upi") {
+
+            alert(
+                "UPI payment interface demo. No real payment will be processed."
+            );
+
+        }
+
+
+        if (payment === "card") {
+
+            alert(
+                "Card payment interface demo. No real payment will be processed."
+            );
+
+        }
+
+
+        /* GENERATE ORDER ID */
+
+        const orderId =
+            "MED" +
+            Date.now()
+                .toString()
+                .slice(-8);
+
+
+        document.getElementById(
+            "orderNumber"
+        ).textContent =
+            orderId;
+
+
+        /* SAVE DEMO ORDER */
+
+        const order = {
+
+            orderId: orderId,
+
+            customerName: name,
+
+            phone: phone,
+
+            email:
+                document.getElementById(
+                    "customerEmail"
+                ).value.trim(),
+
+            city: city,
+
+            address: address,
+
+            state: state,
+
+            pincode: pincode,
+
+            payment: payment,
+
+            items: cart,
+total: total,
+            date: new Date().toLocaleString()
+
+        };
+
+
+        localStorage.setItem(
+            "medicareLastOrder",
+            JSON.stringify(order)
+        ); 
+
+
+let previousOrders =
+    JSON.parse(
+        localStorage.getItem("medicareOrders")
+    ) || [];
+
+previousOrders.unshift(order);
+
+localStorage.setItem(
+    "medicareOrders",
+    JSON.stringify(previousOrders)
+);
+
+        /* CLEAR CART */
+
+        localStorage.removeItem(
+            "medicareCart"
+        );
+
+
+        cart = [];
+
+
+        /* SHOW SUCCESS */
+
+        checkoutLayout.style.display =
+            "none";
+
+        successMessage.style.display =
+            "block";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+    }
+);
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
+
+const mainNav =
+    document.getElementById(
+        "mainNav"
+    );
+
+
+if (menuBtn) {
+
+    menuBtn.addEventListener(
+        "click",
+        function() {
+
+            mainNav.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+</script>
+
+</body>
+
+</html>

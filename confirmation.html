@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmed | MediCare Pharmacy</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        .confirmation-page {
+            min-height: 75vh;
+            background: #f7faf9;
+            padding: 60px 15px;
+        }
+
+        .confirmation-card {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            border: 1px solid #e1ebe8;
+            border-radius: 18px;
+            padding: 45px 30px;
+            text-align: center;
+        }
+
+        .success-circle {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            background: #e7f8f3;
+            color: #10a48f;
+            display: grid;
+            place-items: center;
+            font-size: 38px;
+        }
+
+        .confirmation-card h1 {
+            color: #083f3a;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-card > p {
+            color: #7b8986;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .order-id-box {
+            margin: 25px auto;
+            padding: 15px;
+            background: #f0f9f7;
+            border-radius: 10px;
+            max-width: 320px;
+        }
+
+        .order-id-box span {
+            display: block;
+            color: #899592;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .order-id-box strong {
+            color: #10a48f;
+            font-size: 17px;
+        }
+
+        .confirmation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .confirm-btn {
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .primary-btn {
+            background: #10a48f;
+            color: white;
+        }
+
+        .secondary-btn {
+            background: #edf7f5;
+            color: #087f71;
+        }
+
+        .order-info {
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid #edf2f1;
+            color: #7c8986;
+            font-size: 10px;
+        }
+
+        .order-info strong {
+            color: #304b47;
+        }
+
+        @media(max-width:600px) {
+            .confirmation-page {
+                padding: 35px 12px;
+            }
+
+            .confirmation-card {
+                padding: 35px 20px;
+            }
+
+            .confirmation-card h1 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="cart-header">
+
+    <div class="container header-flex">
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-icon">
+                <i class="fa-solid fa-plus"></i>
+            </span>
+
+            <span>
+                <strong>MediCare</strong>
+                <small>PHARMACY</small>
+            </span>
+
+        </a>
+
+        <a href="orders.html" class="back-link">
+            <i class="fa-solid fa-receipt"></i>
+            My Orders
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="confirmation-page">
+
+    <div class="confirmation-card">
+
+        <div class="success-circle">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h1>Order Confirmed!</h1>
+
+        <p>
+            Thank you for ordering from MediCare Pharmacy.
+            Your order has been successfully placed.
+        </p>
+
+        <div class="order-id-box">
+
+            <span>YOUR ORDER ID</span>
+
+            <strong id="orderId">
+                Loading...
+            </strong>
+
+        </div>
+
+        <div class="order-info">
+
+            <p>
+                <strong>Customer:</strong>
+                <span id="customerName">-</span>
+            </p>
+
+            <p>
+                <strong>Total:</strong>
+                ₹<span id="orderTotal">0</span>
+            </p>
+
+            <p>
+                <strong>Payment:</strong>
+                <span id="paymentMethod">-</span>
+            </p>
+
+        </div>
+
+
+        <div class="confirmation-buttons">
+
+            <a href="orders.html"
+               class="confirm-btn primary-btn">
+                <i class="fa-solid fa-receipt"></i>
+                View My Orders
+            </a>
+
+            <a href="medicines.html"
+               class="confirm-btn secondary-btn">
+                <i class="fa-solid fa-cart-plus"></i>
+                Continue Shopping
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+const order =
+    JSON.parse(
+        localStorage.getItem("medicareLastOrder")
+    );
+
+if (order) {
+
+    document.getElementById("orderId").textContent =
+        order.orderId || "-";
+
+    document.getElementById("customerName").textContent =
+        order.customerName || "-";
+
+    document.getElementById("orderTotal").textContent =
+        order.total || "0";
+
+    document.getElementById("paymentMethod").textContent =
+        formatPayment(order.payment);
+
+} else {
+
+    document.getElementById("orderId").textContent =
+        "No order found";
+
+}
+
+
+function formatPayment(payment) {
+
+    if (payment === "cod") {
+        return "Cash on Delivery";
+    }
+
+    if (payment === "upi") {
+        return "UPI";
+    }
+
+    if (payment === "card") {
+        return "Card Payment";
+    }
+
+    return "-";
+}
+
+</script>
+
+</body>
+</html>
