@@ -4,533 +4,489 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MediCare Pharmacy - Your trusted online pharmacy for everyday healthcare essentials.">
-    <title>MediCare Pharmacy | Your Health, Our Care</title>
+    <meta name="description" content="MediTrack Pharmacy - healthcare essentials in Nigdi, Pune.">
+    <title>MediTrack Pharmacy | Your Health, Our Care</title>
 
     <style>
         :root {
             --green: #16845b;
-            --dark-green: #0d5b3e;
-            --light-green: #eaf7ef;
-            --text: #20352b;
-            --muted: #68786f;
+            --dark: #104b35;
+            --light: #eff8f1;
+            --text: #24382e;
+            --muted: #69796f;
+            --border: #dfebe2;
             --white: #ffffff;
-            --border: #e2ece5;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
             color: var(--text);
-            background: #ffffff;
             line-height: 1.6;
+            background: white;
         }
 
-        a {
-            text-decoration: none;
-        }
+        a { text-decoration: none; }
 
-        button, input {
-            font: inherit;
-        }
+        button, input { font: inherit; }
 
         .container {
             width: min(1120px, 92%);
             margin: auto;
         }
 
-        /* Navigation */
         header {
-            background: #ffffff;
-            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10;
+            background: white;
+            border-bottom: 1px solid var(--border);
         }
 
         .navbar {
-            min-height: 76px;
+            min-height: 74px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 10px 0;
         }
 
         .logo {
-            color: var(--dark-green);
+            color: var(--dark);
             font-size: 25px;
             font-weight: 800;
-            white-space: nowrap;
         }
 
-        .logo span {
-            color: var(--green);
-        }
+        .logo span { color: var(--green); }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 22px;
         }
 
         .nav-links a {
             color: var(--text);
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        .nav-links a:hover {
-            color: var(--green);
-        }
-
-        .nav-links .nav-contact {
-            background: var(--green);
-            color: white;
-            padding: 11px 17px;
-            border-radius: 25px;
-        }
+        .nav-links a:hover { color: var(--green); }
 
         .menu-toggle {
             display: none;
-            background: var(--light-green);
-            color: var(--dark-green);
             border: 0;
             border-radius: 8px;
             padding: 8px 12px;
+            background: var(--light);
+            color: var(--dark);
             cursor: pointer;
         }
 
-        /* Hero */
         .hero {
-            background: linear-gradient(120deg, #effaf2, #f8fcf8);
             padding: 75px 0;
-            overflow: hidden;
+            background: linear-gradient(125deg, #eaf8ee, #f8fcf8);
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1.1fr .9fr;
             align-items: center;
-            gap: 45px;
+            gap: 40px;
         }
 
         .eyebrow {
             display: inline-block;
-            color: var(--green);
-            background: #dff4e7;
-            border-radius: 30px;
             padding: 7px 14px;
+            margin-bottom: 18px;
+            border-radius: 30px;
+            background: #d9f1e1;
+            color: var(--green);
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 1px;
-            margin-bottom: 20px;
         }
 
-        .hero h1 {
-            color: var(--dark-green);
-            font-size: clamp(38px, 5vw, 58px);
+        h1 {
+            color: var(--dark);
+            font-size: clamp(38px, 5vw, 60px);
             line-height: 1.12;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        .hero h1 span {
-            color: var(--green);
-        }
+        h1 span { color: var(--green); }
 
         .hero p {
             max-width: 520px;
+            margin-bottom: 25px;
             color: var(--muted);
             font-size: 17px;
-            margin-bottom: 28px;
         }
 
         .button {
             display: inline-block;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 20px;
             background: var(--green);
             color: white;
-            border: 0;
-            padding: 13px 23px;
-            border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
         }
 
-        .button:hover {
-            background: var(--dark-green);
-            transform: translateY(-2px);
-        }
-
-        .button-outline {
-            background: white;
-            color: var(--dark-green);
-            border: 1px solid #cfe4d5;
-            margin-left: 8px;
-        }
-
-        .button-outline:hover {
-            color: white;
-        }
+        .button:hover { background: var(--dark); }
 
         .hero-art {
-            min-height: 320px;
-            border-radius: 28px;
-            background: linear-gradient(145deg, #d7f0df, #a9dfbd);
+            min-height: 300px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             position: relative;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #d7f1df, #a6ddb9);
         }
 
-        .hero-art .medical-icon {
-            font-size: clamp(100px, 17vw, 175px);
-            filter: drop-shadow(0 12px 12px #438b5b30);
+        .hero-art .emoji {
+            font-size: clamp(100px, 16vw, 170px);
         }
 
-        .floating-note {
+        .hero-note {
             position: absolute;
-            bottom: 24px;
-            left: 20px;
+            left: 18px;
+            bottom: 18px;
+            padding: 11px 15px;
+            border-radius: 10px;
             background: white;
-            padding: 12px 17px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px #174c2c15;
             font-size: 13px;
             font-weight: 700;
         }
 
-        /* Benefits */
         .benefits {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 32px 0;
+            gap: 18px;
+            padding-top: 30px;
+            padding-bottom: 30px;
         }
 
         .benefit {
             display: flex;
             align-items: center;
-            gap: 13px;
-            padding: 16px;
+            gap: 12px;
+            padding: 17px;
             border: 1px solid var(--border);
             border-radius: 12px;
         }
 
-        .benefit-icon {
-            font-size: 29px;
-        }
+        .benefit-icon { font-size: 28px; }
 
         .benefit strong {
             display: block;
             font-size: 14px;
         }
 
-        .benefit small {
-            color: var(--muted);
+        .benefit small { color: var(--muted); }
+
+        .section {
+            padding: 65px 0;
         }
 
-        /* Products */
-        .products-section {
-            padding: 65px 0 75px;
-            background: #fbfdfb;
-        }
+        .section-soft { background: #f8fbf8; }
 
         .section-heading {
-            text-align: center;
             margin-bottom: 30px;
+            text-align: center;
         }
 
         .section-heading h2 {
-            font-size: clamp(28px, 4vw, 36px);
-            color: var(--dark-green);
+            color: var(--dark);
+            font-size: clamp(28px, 4vw, 37px);
             margin-bottom: 8px;
         }
 
-        .section-heading p {
-            color: var(--muted);
-        }
+        .section-heading p { color: var(--muted); }
 
         .search-wrap {
             max-width: 500px;
-            margin: 0 auto 30px;
+            margin: 0 auto 28px;
         }
 
-        .search-wrap input {
+        .search-wrap input,
+        .sales-form input {
             width: 100%;
-            border: 1px solid #d5e5d9;
-            border-radius: 10px;
-            padding: 14px 16px;
-            outline: none;
+            padding: 13px 14px;
+            border: 1px solid #d3e3d7;
+            border-radius: 9px;
             background: white;
         }
 
-        .search-wrap input:focus {
+        .search-wrap input:focus,
+        .sales-form input:focus {
+            outline: 2px solid #b9e4c8;
             border-color: var(--green);
-            box-shadow: 0 0 0 3px #16845b15;
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 18px;
         }
 
         .product-card {
-            background: white;
+            padding: 18px;
             border: 1px solid var(--border);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 14px;
+            background: white;
             text-align: center;
-            transition: 0.2s;
+            transition: transform .2s, box-shadow .2s;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px #163f2410;
+            transform: translateY(-3px);
+            box-shadow: 0 9px 24px #153d2410;
         }
 
         .product-picture {
-            height: 125px;
             display: flex;
-            justify-content: center;
+            height: 115px;
             align-items: center;
-            background: var(--light-green);
-            border-radius: 12px;
-            font-size: 58px;
-            margin-bottom: 16px;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background: var(--light);
+            font-size: 52px;
         }
 
-        .product-card h3 {
-            font-size: 17px;
-            margin-bottom: 5px;
-        }
+        .product-card h3 { font-size: 17px; }
 
         .product-card p {
-            font-size: 13px;
+            min-height: 42px;
+            margin: 5px 0 12px;
             color: var(--muted);
-            margin-bottom: 13px;
+            font-size: 13px;
         }
 
         .product-card .button {
-            width: 100%;
-            padding: 10px;
+            display: block;
             font-size: 13px;
         }
 
-        .product-note {
-            text-align: center;
+        .note {
+            margin-top: 20px;
             color: var(--muted);
+            text-align: center;
             font-size: 13px;
-            margin-top: 25px;
         }
 
         .no-results {
             display: none;
             text-align: center;
             padding: 20px;
-            color: var(--muted);
         }
 
-        /* Contact */
-        .contact-section {
-            padding: 75px 0;
-            background: #eff8f1;
-        }
-
-        .contact-card {
-            max-width: 600px;
-            margin: 30px auto 0;
+        /* Sales dashboard */
+        .sales-form {
+            max-width: 650px;
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            align-items: end;
+            gap: 12px;
+            margin: 0 auto 28px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
             background: white;
-            padding: 38px 25px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .sales-form .button { white-space: nowrap; }
+
+        .sales-summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .sales-stat {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: white;
+            text-align: center;
+        }
+
+        .sales-stat p {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .sales-stat h3 {
+            margin-top: 8px;
+            color: var(--green);
+            font-size: 30px;
+            overflow-wrap: anywhere;
+        }
+
+        .records-card {
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: white;
+        }
+
+        .records-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .records-header h3 { color: var(--dark); }
+
+        .record {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 12px 0;
+            border-top: 1px solid var(--border);
+            overflow-wrap: anywhere;
+        }
+
+        .record strong { color: var(--dark); }
+
+        .button-secondary {
+            background: #edf5ef;
+            color: var(--dark);
+        }
+
+        .button-danger {
+            background: #fff0f0;
+            color: #a12525;
+        }
+
+        /* About */
+        .about-card {
+            max-width: 720px;
+            margin: auto;
+            padding: 35px;
             border: 1px solid var(--border);
             border-radius: 20px;
+            background: white;
+            box-shadow: 0 12px 30px #173f250c;
             text-align: center;
-            box-shadow: 0 12px 35px #173f2510;
         }
 
-        .contact-avatar {
-            width: 85px;
-            height: 85px;
+        .avatar {
+            width: 82px;
+            height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 0 auto 18px;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background: #d9f3e4;
-            color: var(--dark-green);
+            color: var(--dark);
             font-size: 27px;
             font-weight: 800;
         }
 
-        .contact-card h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
+        .about-card h3 {
+            color: var(--dark);
+            font-size: 25px;
         }
 
-        .contact-description {
+        .about-intro {
+            margin: 8px 0 22px;
             color: var(--muted);
-            margin-bottom: 23px;
         }
 
-        .contact-detail {
-            padding: 14px 8px;
+        .about-detail {
+            padding: 15px 5px;
             border-top: 1px solid var(--border);
-        }
-
-        .contact-label {
-            display: block;
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .contact-detail a {
-            color: var(--dark-green);
-            font-weight: 700;
             overflow-wrap: anywhere;
         }
 
-        .instagram-button {
-            display: inline-block;
-            background: #d94382;
-            color: white !important;
-            padding: 12px 20px;
-            border-radius: 30px;
-            margin-top: 8px;
+        .about-label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .instagram-button:hover {
-            background: #bd2d6c;
+        .about-detail a {
+            color: var(--green);
+            font-weight: 700;
         }
 
-        /* Footer */
         footer {
-            background: #103f2c;
-            color: #e9f6ed;
             padding: 25px 0;
+            background: var(--dark);
+            color: white;
             text-align: center;
-        }
-
-        footer p {
             font-size: 13px;
         }
 
-        footer a {
-            color: white;
-        }
-
         @media (max-width: 900px) {
-            .hero-grid {
-                grid-template-columns: 1fr 0.8fr;
-                gap: 25px;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .benefits {
-                grid-template-columns: 1fr;
-            }
-
-            .benefit {
-                padding: 12px 16px;
-            }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .benefits { grid-template-columns: 1fr; }
+            .sales-form { grid-template-columns: 1fr 1fr; }
+            .sales-form .button { grid-column: 1 / -1; }
         }
 
-        @media (max-width: 680px) {
-            .navbar {
-                min-height: 68px;
-                flex-wrap: wrap;
-                padding: 12px 0;
-            }
-
-            .logo {
-                font-size: 22px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
+        @media (max-width: 650px) {
+            .navbar { min-height: 68px; }
+            .logo { font-size: 22px; }
+            .menu-toggle { display: block; }
 
             .nav-links {
                 display: none;
-                width: 100%;
                 flex-direction: column;
                 align-items: stretch;
                 gap: 0;
+                width: 100%;
                 padding-bottom: 8px;
             }
 
-            .nav-links.open {
-                display: flex;
-            }
+            .nav-links.open { display: flex; }
 
-            .nav-links a {
-                display: block;
-                padding: 12px 5px;
-            }
+            .nav-links a { padding: 10px 3px; }
 
-            .nav-links .nav-contact {
-                text-align: center;
-                margin-top: 5px;
-            }
+            .hero { padding: 45px 0; }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-art { min-height: 220px; }
+            .hero-art .emoji { font-size: 110px; }
 
-            .hero {
-                padding: 48px 0;
-            }
+            .product-grid { gap: 10px; }
+            .product-card { padding: 11px; }
+            .product-picture { height: 90px; font-size: 43px; }
+            .product-card h3 { font-size: 15px; }
 
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-art {
-                min-height: 220px;
-            }
-
-            .hero-art .medical-icon {
-                font-size: 115px;
-            }
-
-            .hero h1 {
-                font-size: 39px;
-            }
-
-            .product-grid {
-                gap: 12px;
-            }
-
-            .product-card {
-                padding: 12px;
-            }
-
-            .product-picture {
-                height: 100px;
-                font-size: 45px;
-            }
-
-            .product-card h3 {
-                font-size: 15px;
-            }
-
-            .button-outline {
-                margin: 10px 0 0;
-            }
-
-            .contact-card {
-                padding: 28px 16px;
-            }
+            .sales-form { grid-template-columns: 1fr; }
+            .sales-form .button { grid-column: auto; }
+            .sales-summary { grid-template-columns: 1fr; }
+            .sales-stat h3 { font-size: 27px; }
+            .about-card { padding: 25px 17px; }
         }
     </style>
 </head>
@@ -539,10 +495,10 @@
 
 <header>
     <div class="container navbar">
-        <a class="logo" href="#home">MediCare<span>+</span></a>
+        <a class="logo" href="#home">MediTrack<span>+</span></a>
 
         <button class="menu-toggle" id="menuToggle"
-                aria-label="Toggle navigation" aria-expanded="false">
+                aria-expanded="false" aria-controls="navLinks">
             ☰ Menu
         </button>
 
@@ -550,51 +506,48 @@
             <a href="#home">Home</a>
             <a href="#products">Featured Products</a>
             <a href="medicines.html">All Medicines</a>
-            <a href="checkout.html">Checkout</a>
-            <a class="nav-contact" href="#contact">Contact Me</a>
+            <a href="#sales">Sales Reports</a>
+            <a href="#about">About</a>
         </nav>
     </div>
 </header>
 
 <main>
-    <!-- Home -->
+    <!-- HOME -->
     <section class="hero" id="home">
         <div class="container hero-grid">
             <div>
-                <span class="eyebrow">WELCOME TO MEDICARE</span>
+                <span class="eyebrow">WELCOME TO MEDITRACK</span>
                 <h1>Your Health,<br><span>Our Care.</span></h1>
-
                 <p>
-                    Discover everyday healthcare essentials in a clean,
-                    convenient online pharmacy experience.
+                    Explore everyday healthcare essentials with a simple
+                    and convenient pharmacy website experience.
                 </p>
-
                 <a href="medicines.html" class="button">Explore Medicines</a>
-                <a href="#contact" class="button button-outline">Contact Me</a>
             </div>
 
             <div class="hero-art" aria-label="Healthcare illustration">
-                <div class="medical-icon" aria-hidden="true">💊</div>
-                <div class="floating-note">💚 Your health matters</div>
+                <div class="emoji" aria-hidden="true">💊</div>
+                <div class="hero-note">💚 Your health matters</div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="container benefits" aria-label="Website highlights">
+    <!-- HIGHLIGHTS -->
+    <section class="container benefits">
         <div class="benefit">
             <span class="benefit-icon">🩺</span>
             <div>
                 <strong>Healthcare Essentials</strong>
-                <small>Explore everyday health products</small>
+                <small>Explore health product categories</small>
             </div>
         </div>
 
         <div class="benefit">
             <span class="benefit-icon">🔎</span>
             <div>
-                <strong>Easy Product Search</strong>
-                <small>Find featured products quickly</small>
+                <strong>Easy Search</strong>
+                <small>Search featured categories</small>
             </div>
         </div>
 
@@ -607,16 +560,16 @@
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="products-section" id="products">
+    <!-- FEATURED PRODUCTS -->
+    <section class="section section-soft" id="products">
         <div class="container">
             <div class="section-heading">
                 <h2>Featured Products</h2>
-                <p>Explore some common healthcare essentials.</p>
+                <p>Explore common healthcare product categories.</p>
             </div>
 
             <div class="search-wrap">
-                <input type="search" id="productSearch"
+                <input id="productSearch" type="search"
                        placeholder="Search featured products..."
                        aria-label="Search featured products">
             </div>
@@ -626,71 +579,142 @@
                     <div class="product-picture">🩹</div>
                     <h3>First Aid Kit</h3>
                     <p>First-aid essentials</p>
-                    <a href="medicines.html" class="button">View Products</a>
+                    <a class="button" href="medicines.html">View Products</a>
                 </article>
 
                 <article class="product-card" data-name="vitamins wellness">
                     <div class="product-picture">🍊</div>
                     <h3>Vitamins & Wellness</h3>
                     <p>Wellness product category</p>
-                    <a href="medicines.html" class="button">View Products</a>
+                    <a class="button" href="medicines.html">View Products</a>
                 </article>
 
                 <article class="product-card" data-name="personal care">
                     <div class="product-picture">🧴</div>
                     <h3>Personal Care</h3>
                     <p>Everyday personal care</p>
-                    <a href="medicines.html" class="button">View Products</a>
+                    <a class="button" href="medicines.html">View Products</a>
                 </article>
 
                 <article class="product-card" data-name="health essentials">
                     <div class="product-picture">🌡️</div>
                     <h3>Health Essentials</h3>
                     <p>Common health supplies</p>
-                    <a href="medicines.html" class="button">View Products</a>
+                    <a class="button" href="medicines.html">View Products</a>
                 </article>
             </div>
 
             <p class="no-results" id="noResults">
-                No featured products match your search.
+                No matching featured products found.
             </p>
 
-            <p class="product-note">
-                These are category previews. Visit All Medicines to see
-                the products available on your website.
+            <p class="note">
+                These are category previews. See All Medicines for the
+                products listed on your existing medicines page.
             </p>
         </div>
     </section>
 
-    <!-- Contact Me: replaces About -->
-    <section class="contact-section" id="contact">
+    <!-- WEEKLY AND MONTHLY SALES -->
+    <section class="section" id="sales">
         <div class="container">
             <div class="section-heading">
-                <h2>Contact Me</h2>
-                <p>Have a question? Connect with me.</p>
+                <h2>Sales Dashboard</h2>
+                <p>Add daily sales to calculate this week's and this month's totals.</p>
             </div>
 
-            <div class="contact-card">
-                <div class="contact-avatar" aria-hidden="true">MT</div>
+            <form class="sales-form" id="salesForm">
+                <div class="field">
+                    <label for="saleDate">Sales Date</label>
+                    <input id="saleDate" type="date" required>
+                </div>
 
-                <h3>Mulani Tamanna Valisab</h3>
-                <p class="contact-description">
-                    Creator of the MediCare Pharmacy project
+                <div class="field">
+                    <label for="saleAmount">Sales Amount (₹)</label>
+                    <input id="saleAmount" type="number"
+                           min="0.01" step="0.01"
+                           placeholder="Enter amount" required>
+                </div>
+
+                <button class="button" type="submit">Add Sales</button>
+            </form>
+
+            <div class="sales-summary">
+                <div class="sales-stat">
+                    <p>This Week's Sales</p>
+                    <h3 id="weeklySales">₹0.00</h3>
+                    <small>Monday to today</small>
+                </div>
+
+                <div class="sales-stat">
+                    <p>This Month's Sales</p>
+                    <h3 id="monthlySales">₹0.00</h3>
+                    <small>First day of month to today</small>
+                </div>
+            </div>
+
+            <div class="records-card">
+                <div class="records-header">
+                    <h3>Sales Records</h3>
+                    <button class="button button-secondary" type="button"
+                            id="clearSales">Clear Records</button>
+                </div>
+
+                <div id="salesRecords" aria-live="polite">
+                    No sales records added yet.
+                </div>
+
+                <p class="note">
+                    Demo feature: records are saved only in this browser.
+                    They are not connected to real customer orders or a database.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT MEDITRACK -->
+    <section class="section section-soft" id="about">
+        <div class="container">
+            <div class="section-heading">
+                <h2>About MediTrack</h2>
+                <p>Learn about our pharmacy and find our contact details.</p>
+            </div>
+
+            <div class="about-card">
+                <div class="avatar" aria-hidden="true">MT</div>
+
+                <h3>MediTrack</h3>
+                <p class="about-intro">
+                    A pharmacy website for exploring healthcare essentials.
                 </p>
 
-                <div class="contact-detail">
-                    <span class="contact-label">Instagram</span>
-                    <a class="instagram-button"
-                       href="https://www.instagram.com/tamanna___686/"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        ◎ @tamanna___686
+                <div class="about-detail">
+                    <span class="about-label">Owner</span>
+                    <strong>Tamanna Mulani</strong>
+                </div>
+
+                <div class="about-detail">
+                    <span class="about-label">Phone Number</span>
+                    <a href="tel:+918080192807">8080192807</a>
+                </div>
+
+                <div class="about-detail">
+                    <span class="about-label">Email Address</span>
+                    <a href="mailto:mulanitamanna93@gamil.com">
+                        mulanitamanna93@gamil.com
                     </a>
                 </div>
 
-                <div class="contact-detail">
-                    <span class="contact-label">Contact Number</span>
-                    <a href="tel:+918080192807">+91 8080192807</a>
+                <div class="about-detail">
+                    <span class="about-label">Address</span>
+                    <p>
+                        Ground Floor, near Lokmanya Hospital,
+                        Sector 27A, Nigdi, Pune
+                    </p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Lokmanya+Hospital+Sector+27A+Nigdi+Pune"
+                       target="_blank" rel="noopener noreferrer">
+                        Find nearby location on Google Maps
+                    </a>
                 </div>
             </div>
         </div>
@@ -700,21 +724,21 @@
 <footer>
     <div class="container">
         <p>
-            © <span id="currentYear"></span> MediCare Pharmacy.
-            Made with 💚 for healthcare.
+            © <span id="currentYear"></span> MediTrack Pharmacy.
+            All rights reserved.
         </p>
-        <p>For educational and demonstration purposes.</p>
+        <p>Website demonstration project.</p>
     </div>
 </footer>
 
 <script>
-    // Mobile navigation
+    // Mobile menu
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
     menuToggle.addEventListener("click", function () {
-        const isOpen = navLinks.classList.toggle("open");
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        const opened = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(opened));
     });
 
     navLinks.querySelectorAll("a").forEach(function (link) {
@@ -724,32 +748,152 @@
         });
     });
 
-    // Search featured product categories
+    // Featured product search
     const productSearch = document.getElementById("productSearch");
     const productCards = document.querySelectorAll(".product-card");
     const noResults = document.getElementById("noResults");
 
     productSearch.addEventListener("input", function () {
         const query = productSearch.value.toLowerCase().trim();
-        let visibleCount = 0;
+        let count = 0;
 
         productCards.forEach(function (card) {
-            const name = card.dataset.name.toLowerCase();
-            const visible = name.includes(query);
+            const matches = card.dataset.name.includes(query);
+            card.style.display = matches ? "" : "none";
+            if (matches) count++;
+        });
 
-            card.style.display = visible ? "" : "none";
+        noResults.style.display = count === 0 ? "block" : "none";
+    });
 
-            if (visible) {
-                visibleCount++;
+    // Footer year
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+    // Sales dashboard: browser-only storage
+    const salesForm = document.getElementById("salesForm");
+    const dateInput = document.getElementById("saleDate");
+    const amountInput = document.getElementById("saleAmount");
+    const recordsBox = document.getElementById("salesRecords");
+    const storageKey = "meditrackSalesRecords";
+
+    function localDateString(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    }
+
+    function readSales() {
+        try {
+            const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
+            return Array.isArray(data) ? data.filter(function (record) {
+                return record &&
+                    typeof record.date === "string" &&
+                    /^\d{4}-\d{2}-\d{2}$/.test(record.date) &&
+                    Number.isFinite(record.amount) &&
+                    record.amount > 0;
+            }) : [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function saveSales(records) {
+        localStorage.setItem(storageKey, JSON.stringify(records));
+    }
+
+    function renderSales() {
+        const records = readSales();
+        const today = new Date();
+        const todayString = localDateString(today);
+
+        const monday = new Date(today);
+        monday.setHours(0, 0, 0, 0);
+        monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
+        const mondayString = localDateString(monday);
+
+        const currentMonth = todayString.slice(0, 7);
+        let weeklyTotal = 0;
+        let monthlyTotal = 0;
+
+        records.forEach(function (record) {
+            if (record.date >= mondayString && record.date <= todayString) {
+                weeklyTotal += record.amount;
+            }
+
+            if (record.date.startsWith(currentMonth) &&
+                record.date <= todayString) {
+                monthlyTotal += record.amount;
             }
         });
 
-        noResults.style.display = visibleCount === 0 ? "block" : "none";
+        document.getElementById("weeklySales").textContent =
+            "₹" + weeklyTotal.toFixed(2);
+
+        document.getElementById("monthlySales").textContent =
+            "₹" + monthlyTotal.toFixed(2);
+
+        recordsBox.replaceChildren();
+
+        if (records.length === 0) {
+            recordsBox.textContent = "No sales records added yet.";
+            return;
+        }
+
+        records.slice().sort(function (a, b) {
+            return b.date.localeCompare(a.date);
+        }).forEach(function (record) {
+            const row = document.createElement("div");
+            row.className = "record";
+
+            const date = document.createElement("span");
+            date.textContent = record.date;
+
+            const amount = document.createElement("strong");
+            amount.textContent = "₹" + record.amount.toFixed(2);
+
+            row.append(date, amount);
+            recordsBox.appendChild(row);
+        });
+    }
+
+    dateInput.value = localDateString(new Date());
+    dateInput.max = localDateString(new Date());
+
+    salesForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const date = dateInput.value;
+        const amount = Number(amountInput.value);
+        const today = localDateString(new Date());
+
+        if (!date || date > today || !Number.isFinite(amount) || amount <= 0) {
+            alert("Please enter a valid sales date and a positive amount.");
+            return;
+        }
+
+        const records = readSales();
+        records.push({ date: date, amount: amount });
+
+        try {
+            saveSales(records);
+            amountInput.value = "";
+            renderSales();
+            alert("Sales record saved in this browser.");
+        } catch (error) {
+            alert("Could not save the record. Browser storage may be unavailable.");
+        }
     });
 
-    // Current year in footer
-    document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
+    document.getElementById("clearSales").addEventListener("click", function () {
+        if (confirm("Are you sure you want to delete all sales records in this browser?")) {
+            localStorage.removeItem(storageKey);
+            renderSales();
+        }
+    });
+
+    renderSales();
 </script>
 
 </body>
