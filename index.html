@@ -1,669 +1,756 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MediCare Pharmacy - Your trusted online pharmacy">
-    <title>MediCare Pharmacy</title>
+    <meta name="description" content="MediCare Pharmacy - Your trusted online pharmacy for everyday healthcare essentials.">
+    <title>MediCare Pharmacy | Your Health, Our Care</title>
 
-```
-<link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --green: #16845b;
+            --dark-green: #0d5b3e;
+            --light-green: #eaf7ef;
+            --text: #20352b;
+            --muted: #68786f;
+            --white: #ffffff;
+            --border: #e2ece5;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-```
+        html {
+            scroll-behavior: smooth;
+        }
 
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button, input {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        /* Navigation */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            color: var(--dark-green);
+            font-size: 25px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .nav-links .nav-contact {
+            background: var(--green);
+            color: white;
+            padding: 11px 17px;
+            border-radius: 25px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--light-green);
+            color: var(--dark-green);
+            border: 0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(120deg, #effaf2, #f8fcf8);
+            padding: 75px 0;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--green);
+            background: #dff4e7;
+            border-radius: 30px;
+            padding: 7px 14px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            color: var(--dark-green);
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.12;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            max-width: 520px;
+            color: var(--muted);
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            border: 0;
+            padding: 13px 23px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        .button-outline {
+            background: white;
+            color: var(--dark-green);
+            border: 1px solid #cfe4d5;
+            margin-left: 8px;
+        }
+
+        .button-outline:hover {
+            color: white;
+        }
+
+        .hero-art {
+            min-height: 320px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #d7f0df, #a9dfbd);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-art .medical-icon {
+            font-size: clamp(100px, 17vw, 175px);
+            filter: drop-shadow(0 12px 12px #438b5b30);
+        }
+
+        .floating-note {
+            position: absolute;
+            bottom: 24px;
+            left: 20px;
+            background: white;
+            padding: 12px 17px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px #174c2c15;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* Benefits */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 32px 0;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .benefit-icon {
+            font-size: 29px;
+        }
+
+        .benefit strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .benefit small {
+            color: var(--muted);
+        }
+
+        /* Products */
+        .products-section {
+            padding: 65px 0 75px;
+            background: #fbfdfb;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 36px);
+            color: var(--dark-green);
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        .search-wrap {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .search-wrap input {
+            width: 100%;
+            border: 1px solid #d5e5d9;
+            border-radius: 10px;
+            padding: 14px 16px;
+            outline: none;
+            background: white;
+        }
+
+        .search-wrap input:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px #16845b15;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px #163f2410;
+        }
+
+        .product-picture {
+            height: 125px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--light-green);
+            border-radius: 12px;
+            font-size: 58px;
+            margin-bottom: 16px;
+        }
+
+        .product-card h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 13px;
+        }
+
+        .product-card .button {
+            width: 100%;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .product-note {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 25px;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: var(--muted);
+        }
+
+        /* Contact */
+        .contact-section {
+            padding: 75px 0;
+            background: #eff8f1;
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: 30px auto 0;
+            background: white;
+            padding: 38px 25px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 12px 35px #173f2510;
+        }
+
+        .contact-avatar {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #d9f3e4;
+            color: var(--dark-green);
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .contact-card h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .contact-description {
+            color: var(--muted);
+            margin-bottom: 23px;
+        }
+
+        .contact-detail {
+            padding: 14px 8px;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-detail a {
+            color: var(--dark-green);
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .instagram-button {
+            display: inline-block;
+            background: #d94382;
+            color: white !important;
+            padding: 12px 20px;
+            border-radius: 30px;
+            margin-top: 8px;
+        }
+
+        .instagram-button:hover {
+            background: #bd2d6c;
+        }
+
+        /* Footer */
+        footer {
+            background: #103f2c;
+            color: #e9f6ed;
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 13px;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr 0.8fr;
+                gap: 25px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit {
+                padding: 12px 16px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .navbar {
+                min-height: 68px;
+                flex-wrap: wrap;
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding-bottom: 8px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 5px;
+            }
+
+            .nav-links .nav-contact {
+                text-align: center;
+                margin-top: 5px;
+            }
+
+            .hero {
+                padding: 48px 0;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-art {
+                min-height: 220px;
+            }
+
+            .hero-art .medical-icon {
+                font-size: 115px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+            }
+
+            .product-grid {
+                gap: 12px;
+            }
+
+            .product-card {
+                padding: 12px;
+            }
+
+            .product-picture {
+                height: 100px;
+                font-size: 45px;
+            }
+
+            .product-card h3 {
+                font-size: 15px;
+            }
+
+            .button-outline {
+                margin: 10px 0 0;
+            }
+
+            .contact-card {
+                padding: 28px 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-```
-<!-- TOP BAR -->
-<div class="top-bar">
-    <div class="container top-content">
-        <span><i class="fa-solid fa-truck"></i> Fast & Safe Delivery</span>
-        <span><i class="fa-solid fa-phone"></i> Need Help? +91 98765 43210</span>
+<header>
+    <div class="container navbar">
+        <a class="logo" href="#home">MediCare<span>+</span></a>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Toggle navigation" aria-expanded="false">
+            ☰ Menu
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#products">Featured Products</a>
+            <a href="medicines.html">All Medicines</a>
+            <a href="checkout.html">Checkout</a>
+            <a class="nav-contact" href="#contact">Contact Me</a>
+        </nav>
     </div>
-</div>
-
-<!-- HEADER -->
-<header class="header">
-    <div class="container nav-container">
-
-        <a href="#" class="logo">
-            <span class="logo-icon">
-                <i class="fa-solid fa-plus"></i>
-            </span>
-            <span>
-                <strong>MediCare</strong>
-                <small>PHARMACY</small>
-            </span>
-        </a>
-
-        <div class="search-box">
-            <input type="text" placeholder="Search medicines, health products...">
-            <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
-
-        <div class="nav-actions">
-            <a href="#" class="action-item">
-                <i class="fa-regular fa-user"></i>
-                <span>Account</span>
-            </a>
-
-            <a href="#" class="action-item cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span>Cart</span>
-                <b>0</b>
-            </a>
-
-            <button class="menu-btn" id="menuBtn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-
-    </div>
-
-    <!-- NAVIGATION -->
-    <nav class="main-nav" id="mainNav">
-        <div class="container nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#medicines">Medicines</a>
-            <a href="#categories">Categories</a>
-            <a href="#offers">Offers</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
 </header>
 
-
-<!-- HERO SECTION -->
 <main>
-
-    <section class="hero">
-        <div class="container hero-content">
-
-            <div class="hero-text">
-                <span class="hero-tag">
-                    <i class="fa-solid fa-shield-heart"></i>
-                    Trusted Healthcare
-                </span>
-
-                <h1>
-                    Your Health,<br>
-                    <span>Our Priority.</span>
-                </h1>
-
-                <p>
-                    Quality medicines and healthcare products
-                    delivered safely to your doorstep.
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="#medicines" class="btn primary-btn">
-                        Shop Medicines
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-
-                    <a href="#categories" class="btn secondary-btn">
-                        Explore Categories
-                    </a>
-                </div>
-
-                <div class="trust-points">
-                    <span>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Genuine Medicines
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Secure Shopping
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Fast Delivery
-                    </span>
-                </div>
-            </div>
-
-            <div class="hero-image">
-                <div class="image-circle">
-                    <i class="fa-solid fa-user-doctor"></i>
-                </div>
-
-                <div class="floating-card card-one">
-                    <i class="fa-solid fa-pills"></i>
-                    <div>
-                        <strong>500+</strong>
-                        <small>Medicines</small>
-                    </div>
-                </div>
-
-                <div class="floating-card card-two">
-                    <i class="fa-solid fa-star"></i>
-                    <div>
-                        <strong>4.9/5</strong>
-                        <small>Customer Rating</small>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- FEATURES -->
-    <section class="features">
-        <div class="container features-grid">
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa-solid fa-truck-fast"></i>
-                </div>
-                <div>
-                    <h3>Fast Delivery</h3>
-                    <p>Quick doorstep delivery</p>
-                </div>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <div>
-                    <h3>100% Genuine</h3>
-                    <p>Authentic medicines</p>
-                </div>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa-solid fa-headset"></i>
-                </div>
-                <div>
-                    <h3>24/7 Support</h3>
-                    <p>We're here to help</p>
-                </div>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <div>
-                    <h3>Secure Payment</h3>
-                    <p>Safe & secure checkout</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- CATEGORIES -->
-    <section class="section" id="categories">
-        <div class="container">
-
-            <div class="section-heading">
-                <div>
-                    <span class="section-label">SHOP BY CATEGORY</span>
-                    <h2>Healthcare Essentials</h2>
-                </div>
-
-                <a href="#" class="view-all">
-                    View All <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="category-grid">
-
-                <a href="#" class="category-card">
-                    <div class="category-icon medicine-icon">
-                        <i class="fa-solid fa-pills"></i>
-                    </div>
-                    <h3>Medicines</h3>
-                    <p>200+ Products</p>
-                </a>
-
-                <a href="#" class="category-card">
-                    <div class="category-icon vitamin-icon">
-                        <i class="fa-solid fa-capsules"></i>
-                    </div>
-                    <h3>Vitamins</h3>
-                    <p>100+ Products</p>
-                </a>
-
-                <a href="#" class="category-card">
-                    <div class="category-icon personal-icon">
-                        <i class="fa-solid fa-pump-soap"></i>
-                    </div>
-                    <h3>Personal Care</h3>
-                    <p>150+ Products</p>
-                </a>
-
-                <a href="#" class="category-card">
-                    <div class="category-icon baby-icon">
-                        <i class="fa-solid fa-baby"></i>
-                    </div>
-                    <h3>Baby Care</h3>
-                    <p>80+ Products</p>
-                </a>
-
-                <a href="#" class="category-card">
-                    <div class="category-icon fitness-icon">
-                        <i class="fa-solid fa-dumbbell"></i>
-                    </div>
-                    <h3>Health & Fitness</h3>
-                    <p>90+ Products</p>
-                </a>
-
-                <a href="#" class="category-card">
-                    <div class="category-icon equipment-icon">
-                        <i class="fa-solid fa-stethoscope"></i>
-                    </div>
-                    <h3>Medical Equipment</h3>
-                    <p>70+ Products</p>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- PRODUCTS -->
-    <section class="section products-section" id="medicines">
-        <div class="container">
-
-            <div class="section-heading">
-                <div>
-                    <span class="section-label">POPULAR PRODUCTS</span>
-                    <h2>Featured Medicines</h2>
-                </div>
-
-                <a href="#" class="view-all">
-                    View All <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="product-grid">
-
-                <article class="product-card">
-
-                    <div class="product-image">
-                        <span class="product-tag">Popular</span>
-                        <button class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                        <div class="medicine-placeholder">
-                            <i class="fa-solid fa-pills"></i>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <span class="product-category">Pain Relief</span>
-                        <h3>Paracetamol 500mg</h3>
-                        <p class="product-description">
-                            Effective relief from pain and fever.
-                        </p>
-
-                        <div class="rating">
-                            <span>★★★★★</span>
-                            <small>(124)</small>
-                        </div>
-
-                        <div class="product-bottom">
-                            <div>
-                                <span class="old-price">₹35</span>
-                                <strong>₹25</strong>
-                            </div>
-
-                            <button class="add-btn">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Add
-                            </button>
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image">
-                        <span class="product-tag discount">20% OFF</span>
-                        <button class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                        <div class="medicine-placeholder vitamin">
-                            <i class="fa-solid fa-capsules"></i>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <span class="product-category">Vitamins</span>
-                        <h3>Vitamin C Tablets</h3>
-                        <p class="product-description">
-                            Daily vitamin C supplement for adults.
-                        </p>
-
-                        <div class="rating">
-                            <span>★★★★★</span>
-                            <small>(98)</small>
-                        </div>
-
-                        <div class="product-bottom">
-                            <div>
-                                <span class="old-price">₹150</span>
-                                <strong>₹120</strong>
-                            </div>
-
-                            <button class="add-btn">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Add
-                            </button>
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image">
-                        <button class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                        <div class="medicine-placeholder allergy">
-                            <i class="fa-solid fa-tablets"></i>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <span class="product-category">Allergy Care</span>
-                        <h3>Cetirizine Tablets</h3>
-                        <p class="product-description">
-                            Helps provide relief from allergy symptoms.
-                        </p>
-
-                        <div class="rating">
-                            <span>★★★★★</span>
-                            <small>(76)</small>
-                        </div>
-
-                        <div class="product-bottom">
-                            <div>
-                                <span class="old-price">₹50</span>
-                                <strong>₹40</strong>
-                            </div>
-
-                            <button class="add-btn">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Add
-                            </button>
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <article class="product-card">
-
-                    <div class="product-image">
-                        <span class="product-tag">Bestseller</span>
-                        <button class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                        <div class="medicine-placeholder health">
-                            <i class="fa-solid fa-bottle-droplet"></i>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <span class="product-category">Healthcare</span>
-                        <h3>Multivitamin Syrup</h3>
-                        <p class="product-description">
-                            Daily nutritional support for your health.
-                        </p>
-
-                        <div class="rating">
-                            <span>★★★★★</span>
-                            <small>(112)</small>
-                        </div>
-
-                        <div class="product-bottom">
-                            <div>
-                                <span class="old-price">₹220</span>
-                                <strong>₹185</strong>
-                            </div>
-
-                            <button class="add-btn">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Add
-                            </button>
-                        </div>
-                    </div>
-
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- OFFER -->
-    <section class="offer-section" id="offers">
-        <div class="container">
-
-            <div class="offer-box">
-
-                <div class="offer-content">
-                    <span>HEALTHCARE OFFER</span>
-
-                    <h2>Save More on<br>Healthcare Essentials</h2>
-
-                    <p>
-                        Get attractive discounts on selected
-                        medicines and healthcare products.
-                    </p>
-
-                    <a href="#medicines" class="btn offer-btn">
-                        Shop Now
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <div class="offer-icon">
-                    <i class="fa-solid fa-prescription-bottle-medical"></i>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- ABOUT -->
-    <section class="section about-section" id="about">
-        <div class="container about-grid">
-
-            <div class="about-visual">
-                <div class="about-main-icon">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                </div>
-
-                <div class="about-stat">
-                    <strong>10K+</strong>
-                    <span>Happy Customers</span>
-                </div>
-            </div>
-
-            <div class="about-content">
-                <span class="section-label">ABOUT MEDICARE</span>
-
-                <h2>Your Trusted Partner in Healthcare</h2>
-
-                <p>
-                    MediCare Pharmacy is designed to make healthcare
-                    simple, convenient and accessible. We provide
-                    a wide range of medicines and healthcare products
-                    through an easy-to-use digital platform.
-                </p>
-
-                <p>
-                    Our focus is on quality, convenience, secure
-                    shopping and reliable healthcare support.
-                </p>
-
-                <div class="about-points">
-                    <div>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Genuine healthcare products
-                    </div>
-
-                    <div>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Easy and convenient shopping
-                    </div>
-
-                    <div>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Customer-focused service
-                    </div>
-                </div>
-
-                <a href="#contact" class="btn primary-btn">
-                    Contact Us
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- NEWSLETTER -->
-    <section class="newsletter">
-        <div class="container newsletter-box">
-
+    <!-- Home -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
             <div>
-                <span class="section-label">STAY UPDATED</span>
-                <h2>Get Healthcare Updates</h2>
-                <p>Subscribe for health tips and latest offers.</p>
+                <span class="eyebrow">WELCOME TO MEDICARE</span>
+                <h1>Your Health,<br><span>Our Care.</span></h1>
+
+                <p>
+                    Discover everyday healthcare essentials in a clean,
+                    convenient online pharmacy experience.
+                </p>
+
+                <a href="medicines.html" class="button">Explore Medicines</a>
+                <a href="#contact" class="button button-outline">Contact Me</a>
             </div>
 
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address">
-                <button type="submit">Subscribe</button>
-            </form>
-
+            <div class="hero-art" aria-label="Healthcare illustration">
+                <div class="medical-icon" aria-hidden="true">💊</div>
+                <div class="floating-note">💚 Your health matters</div>
+            </div>
         </div>
     </section>
 
+    <!-- Benefits -->
+    <section class="container benefits" aria-label="Website highlights">
+        <div class="benefit">
+            <span class="benefit-icon">🩺</span>
+            <div>
+                <strong>Healthcare Essentials</strong>
+                <small>Explore everyday health products</small>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <span class="benefit-icon">🔎</span>
+            <div>
+                <strong>Easy Product Search</strong>
+                <small>Find featured products quickly</small>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <span class="benefit-icon">💚</span>
+            <div>
+                <strong>Customer Friendly</strong>
+                <small>A simple browsing experience</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Featured Products</h2>
+                <p>Explore some common healthcare essentials.</p>
+            </div>
+
+            <div class="search-wrap">
+                <input type="search" id="productSearch"
+                       placeholder="Search featured products..."
+                       aria-label="Search featured products">
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <article class="product-card" data-name="first aid kit">
+                    <div class="product-picture">🩹</div>
+                    <h3>First Aid Kit</h3>
+                    <p>First-aid essentials</p>
+                    <a href="medicines.html" class="button">View Products</a>
+                </article>
+
+                <article class="product-card" data-name="vitamins wellness">
+                    <div class="product-picture">🍊</div>
+                    <h3>Vitamins & Wellness</h3>
+                    <p>Wellness product category</p>
+                    <a href="medicines.html" class="button">View Products</a>
+                </article>
+
+                <article class="product-card" data-name="personal care">
+                    <div class="product-picture">🧴</div>
+                    <h3>Personal Care</h3>
+                    <p>Everyday personal care</p>
+                    <a href="medicines.html" class="button">View Products</a>
+                </article>
+
+                <article class="product-card" data-name="health essentials">
+                    <div class="product-picture">🌡️</div>
+                    <h3>Health Essentials</h3>
+                    <p>Common health supplies</p>
+                    <a href="medicines.html" class="button">View Products</a>
+                </article>
+            </div>
+
+            <p class="no-results" id="noResults">
+                No featured products match your search.
+            </p>
+
+            <p class="product-note">
+                These are category previews. Visit All Medicines to see
+                the products available on your website.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Me: replaces About -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Contact Me</h2>
+                <p>Have a question? Connect with me.</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" aria-hidden="true">MT</div>
+
+                <h3>Mulani Tamanna Valisab</h3>
+                <p class="contact-description">
+                    Creator of the MediCare Pharmacy project
+                </p>
+
+                <div class="contact-detail">
+                    <span class="contact-label">Instagram</span>
+                    <a class="instagram-button"
+                       href="https://www.instagram.com/tamanna___686/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        ◎ @tamanna___686
+                    </a>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-label">Contact Number</span>
+                    <a href="tel:+918080192807">+91 8080192807</a>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
-
-<!-- FOOTER -->
-<footer class="footer" id="contact">
-
-    <div class="container footer-grid">
-
-        <div class="footer-brand">
-            <a href="#" class="logo footer-logo">
-                <span class="logo-icon">
-                    <i class="fa-solid fa-plus"></i>
-                </span>
-                <span>
-                    <strong>MediCare</strong>
-                    <small>PHARMACY</small>
-                </span>
-            </a>
-
-            <p>
-                Your trusted destination for medicines
-                and healthcare essentials.
-            </p>
-
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-
-        <div class="footer-column">
-            <h3>Quick Links</h3>
-            <a href="#">Home</a>
-            <a href="#medicines">Medicines</a>
-            <a href="#categories">Categories</a>
-            <a href="#about">About Us</a>
-        </div>
-
-
-        <div class="footer-column">
-            <h3>Customer Care</h3>
-            <a href="#">My Account</a>
-            <a href="#">My Orders</a>
-            <a href="#">Shipping Policy</a>
-            <a href="#">Privacy Policy</a>
-        </div>
-
-
-        <div class="footer-column contact-column">
-            <h3>Contact Us</h3>
-
-            <p>
-                <i class="fa-solid fa-location-dot"></i>
-                Pune, Maharashtra, India
-            </p>
-
-            <p>
-                <i class="fa-solid fa-phone"></i>
-                +91 98765 43210
-            </p>
-
-            <p>
-                <i class="fa-solid fa-envelope"></i>
-                support@medicare.com
-            </p>
-        </div>
-
+<footer>
+    <div class="container">
+        <p>
+            © <span id="currentYear"></span> MediCare Pharmacy.
+            Made with 💚 for healthcare.
+        </p>
+        <p>For educational and demonstration purposes.</p>
     </div>
-
-    <div class="footer-bottom">
-        <div class="container">
-            <p>© 2026 MediCare Pharmacy. All rights reserved.</p>
-        </div>
-    </div>
-
 </footer>
 
-
-<!-- MOBILE MENU SCRIPT -->
 <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mainNav = document.getElementById("mainNav");
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-    menuBtn.addEventListener("click", function () {
-        mainNav.classList.toggle("show");
+    menuToggle.addEventListener("click", function () {
+        const isOpen = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-    document.querySelectorAll(".main-nav a").forEach(link => {
-        link.addEventListener("click", () => {
-            mainNav.classList.remove("show");
+    navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navLinks.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
         });
     });
+
+    // Search featured product categories
+    const productSearch = document.getElementById("productSearch");
+    const productCards = document.querySelectorAll(".product-card");
+    const noResults = document.getElementById("noResults");
+
+    productSearch.addEventListener("input", function () {
+        const query = productSearch.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        productCards.forEach(function (card) {
+            const name = card.dataset.name.toLowerCase();
+            const visible = name.includes(query);
+
+            card.style.display = visible ? "" : "none";
+
+            if (visible) {
+                visibleCount++;
+            }
+        });
+
+        noResults.style.display = visibleCount === 0 ? "block" : "none";
+    });
+
+    // Current year in footer
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
 </script>
-```
 
 </body>
 </html>
