@@ -2,899 +2,507 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MediTrack Pharmacy - healthcare essentials in Nigdi, Pune.">
-    <title>MediTrack Pharmacy | Your Health, Our Care</title>
-
-    <style>
-        :root {
-            --green: #16845b;
-            --dark: #104b35;
-            --light: #eff8f1;
-            --text: #24382e;
-            --muted: #69796f;
-            --border: #dfebe2;
-            --white: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background: white;
-        }
-
-        a { text-decoration: none; }
-
-        button, input { font: inherit; }
-
-        .container {
-            width: min(1120px, 92%);
-            margin: auto;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: white;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .navbar {
-            min-height: 74px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-            flex-wrap: wrap;
-            padding: 10px 0;
-        }
-
-        .logo {
-            color: var(--dark);
-            font-size: 25px;
-            font-weight: 800;
-        }
-
-        .logo span { color: var(--green); }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .nav-links a:hover { color: var(--green); }
-
-        .menu-toggle {
-            display: none;
-            border: 0;
-            border-radius: 8px;
-            padding: 8px 12px;
-            background: var(--light);
-            color: var(--dark);
-            cursor: pointer;
-        }
-
-        .hero {
-            padding: 75px 0;
-            background: linear-gradient(125deg, #eaf8ee, #f8fcf8);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .eyebrow {
-            display: inline-block;
-            padding: 7px 14px;
-            margin-bottom: 18px;
-            border-radius: 30px;
-            background: #d9f1e1;
-            color: var(--green);
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        h1 {
-            color: var(--dark);
-            font-size: clamp(38px, 5vw, 60px);
-            line-height: 1.12;
-            margin-bottom: 18px;
-        }
-
-        h1 span { color: var(--green); }
-
-        .hero p {
-            max-width: 520px;
-            margin-bottom: 25px;
-            color: var(--muted);
-            font-size: 17px;
-        }
-
-        .button {
-            display: inline-block;
-            border: 0;
-            border-radius: 8px;
-            padding: 12px 20px;
-            background: var(--green);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .button:hover { background: var(--dark); }
-
-        .hero-art {
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border-radius: 25px;
-            background: linear-gradient(145deg, #d7f1df, #a6ddb9);
-        }
-
-        .hero-art .emoji {
-            font-size: clamp(100px, 16vw, 170px);
-        }
-
-        .hero-note {
-            position: absolute;
-            left: 18px;
-            bottom: 18px;
-            padding: 11px 15px;
-            border-radius: 10px;
-            background: white;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            padding-top: 30px;
-            padding-bottom: 30px;
-        }
-
-        .benefit {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 17px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-        }
-
-        .benefit-icon { font-size: 28px; }
-
-        .benefit strong {
-            display: block;
-            font-size: 14px;
-        }
-
-        .benefit small { color: var(--muted); }
-
-        .section {
-            padding: 65px 0;
-        }
-
-        .section-soft { background: #f8fbf8; }
-
-        .section-heading {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .section-heading h2 {
-            color: var(--dark);
-            font-size: clamp(28px, 4vw, 37px);
-            margin-bottom: 8px;
-        }
-
-        .section-heading p { color: var(--muted); }
-
-        .search-wrap {
-            max-width: 500px;
-            margin: 0 auto 28px;
-        }
-
-        .search-wrap input,
-        .sales-form input {
-            width: 100%;
-            padding: 13px 14px;
-            border: 1px solid #d3e3d7;
-            border-radius: 9px;
-            background: white;
-        }
-
-        .search-wrap input:focus,
-        .sales-form input:focus {
-            outline: 2px solid #b9e4c8;
-            border-color: var(--green);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .product-card {
-            padding: 18px;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: white;
-            text-align: center;
-            transition: transform .2s, box-shadow .2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 9px 24px #153d2410;
-        }
-
-        .product-picture {
-            display: flex;
-            height: 115px;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            background: var(--light);
-            font-size: 52px;
-        }
-
-        .product-card h3 { font-size: 17px; }
-
-        .product-card p {
-            min-height: 42px;
-            margin: 5px 0 12px;
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .product-card .button {
-            display: block;
-            font-size: 13px;
-        }
-
-        .note {
-            margin-top: 20px;
-            color: var(--muted);
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .no-results {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Sales dashboard */
-        .sales-form {
-            max-width: 650px;
-            display: grid;
-            grid-template-columns: 1fr 1fr auto;
-            align-items: end;
-            gap: 12px;
-            margin: 0 auto 28px;
-            padding: 22px;
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            background: white;
-        }
-
-        .field label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .sales-form .button { white-space: nowrap; }
-
-        .sales-summary {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-            margin-bottom: 25px;
-        }
-
-        .sales-stat {
-            padding: 25px;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: white;
-            text-align: center;
-        }
-
-        .sales-stat p {
-            color: var(--muted);
-            font-weight: 700;
-        }
-
-        .sales-stat h3 {
-            margin-top: 8px;
-            color: var(--green);
-            font-size: 30px;
-            overflow-wrap: anywhere;
-        }
-
-        .records-card {
-            padding: 23px;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: white;
-        }
-
-        .records-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
-        .records-header h3 { color: var(--dark); }
-
-        .record {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 12px 0;
-            border-top: 1px solid var(--border);
-            overflow-wrap: anywhere;
-        }
-
-        .record strong { color: var(--dark); }
-
-        .button-secondary {
-            background: #edf5ef;
-            color: var(--dark);
-        }
-
-        .button-danger {
-            background: #fff0f0;
-            color: #a12525;
-        }
-
-        /* About */
-        .about-card {
-            max-width: 720px;
-            margin: auto;
-            padding: 35px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            background: white;
-            box-shadow: 0 12px 30px #173f250c;
-            text-align: center;
-        }
-
-        .avatar {
-            width: 82px;
-            height: 82px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 18px;
-            border-radius: 50%;
-            background: #d9f3e4;
-            color: var(--dark);
-            font-size: 27px;
-            font-weight: 800;
-        }
-
-        .about-card h3 {
-            color: var(--dark);
-            font-size: 25px;
-        }
-
-        .about-intro {
-            margin: 8px 0 22px;
-            color: var(--muted);
-        }
-
-        .about-detail {
-            padding: 15px 5px;
-            border-top: 1px solid var(--border);
-            overflow-wrap: anywhere;
-        }
-
-        .about-label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--muted);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .about-detail a {
-            color: var(--green);
-            font-weight: 700;
-        }
-
-        footer {
-            padding: 25px 0;
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        @media (max-width: 900px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-            .benefits { grid-template-columns: 1fr; }
-            .sales-form { grid-template-columns: 1fr 1fr; }
-            .sales-form .button { grid-column: 1 / -1; }
-        }
-
-        @media (max-width: 650px) {
-            .navbar { min-height: 68px; }
-            .logo { font-size: 22px; }
-            .menu-toggle { display: block; }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                width: 100%;
-                padding-bottom: 8px;
-            }
-
-            .nav-links.open { display: flex; }
-
-            .nav-links a { padding: 10px 3px; }
-
-            .hero { padding: 45px 0; }
-            .hero-grid { grid-template-columns: 1fr; }
-            .hero-art { min-height: 220px; }
-            .hero-art .emoji { font-size: 110px; }
-
-            .product-grid { gap: 10px; }
-            .product-card { padding: 11px; }
-            .product-picture { height: 90px; font-size: 43px; }
-            .product-card h3 { font-size: 15px; }
-
-            .sales-form { grid-template-columns: 1fr; }
-            .sales-form .button { grid-column: auto; }
-            .sales-summary { grid-template-columns: 1fr; }
-            .sales-stat h3 { font-size: 27px; }
-            .about-card { padding: 25px 17px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | MediTrack</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f7f6;
+      color: #20332f;
+    }
+
+    header {
+      background: #087f68;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      width: min(950px, 92%);
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px #183d3510;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #087f68;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 14px 0 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd9d5;
+      border-radius: 7px;
+      font: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e8efec;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .muted {
+      color: #65756f;
+      line-height: 1.6;
+    }
+
+    button, .button {
+      display: inline-block;
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      padding: 14px;
+      background: #087f68;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+
+    button:hover, .button:hover {
+      background: #056452;
+    }
+
+    .secondary {
+      background: #e8f5f0;
+      color: #087f68;
+    }
+
+    .secondary:hover {
+      background: #d8eee6;
+    }
+
+    .notice {
+      display: none;
+      padding: 15px;
+      border-radius: 9px;
+      margin-top: 15px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .success {
+      background: #e7f8ed;
+      color: #176b37;
+    }
+
+    .error {
+      background: #fff0ef;
+      color: #a32626;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #65756f;
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <h1>MediTrack</h1>
+    <p>Your health, our priority.</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="medicines.html">Medicines</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
 
-<header>
-    <div class="container navbar">
-        <a class="logo" href="#home">MediTrack<span>+</span></a>
+  <main class="container">
+    <section class="card">
+      <h2>Delivery Details</h2>
+      <p class="muted">Enter your details to place your order.</p>
 
-        <button class="menu-toggle" id="menuToggle"
-                aria-expanded="false" aria-controls="navLinks">
-            ☰ Menu
-        </button>
+      <form id="checkoutForm">
+        <label for="customerName">Full name *</label>
+        <input id="customerName" name="customerName"
+          type="text" autocomplete="name" required>
 
-        <nav class="nav-links" id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#products">Featured Products</a>
-            <a href="medicines.html">All Medicines</a>
-            <a href="#sales">Sales Reports</a>
-            <a href="#about">About</a>
-        </nav>
-    </div>
-</header>
+        <label for="customerPhone">Mobile number *</label>
+        <input id="customerPhone" name="customerPhone"
+          type="tel" inputmode="numeric" autocomplete="tel"
+          pattern="[0-9]{10}" maxlength="10"
+          placeholder="10-digit mobile number" required>
 
-<main>
-    <!-- HOME -->
-    <section class="hero" id="home">
-        <div class="container hero-grid">
-            <div>
-                <span class="eyebrow">WELCOME TO MEDITRACK</span>
-                <h1>Your Health,<br><span>Our Care.</span></h1>
-                <p>
-                    Explore everyday healthcare essentials with a simple
-                    and convenient pharmacy website experience.
-                </p>
-                <a href="medicines.html" class="button">Explore Medicines</a>
-            </div>
+        <label for="customerAddress">Delivery address *</label>
+        <textarea id="customerAddress" name="customerAddress"
+          autocomplete="street-address"
+          placeholder="House number, street, area, city and PIN code"
+          required></textarea>
 
-            <div class="hero-art" aria-label="Healthcare illustration">
-                <div class="emoji" aria-hidden="true">💊</div>
-                <div class="hero-note">💚 Your health matters</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HIGHLIGHTS -->
-    <section class="container benefits">
-        <div class="benefit">
-            <span class="benefit-icon">🩺</span>
-            <div>
-                <strong>Healthcare Essentials</strong>
-                <small>Explore health product categories</small>
-            </div>
-        </div>
-
-        <div class="benefit">
-            <span class="benefit-icon">🔎</span>
-            <div>
-                <strong>Easy Search</strong>
-                <small>Search featured categories</small>
-            </div>
-        </div>
-
-        <div class="benefit">
-            <span class="benefit-icon">💚</span>
-            <div>
-                <strong>Customer Friendly</strong>
-                <small>A simple browsing experience</small>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURED PRODUCTS -->
-    <section class="section section-soft" id="products">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Featured Products</h2>
-                <p>Explore common healthcare product categories.</p>
-            </div>
-
-            <div class="search-wrap">
-                <input id="productSearch" type="search"
-                       placeholder="Search featured products..."
-                       aria-label="Search featured products">
-            </div>
-
-            <div class="product-grid" id="productGrid">
-                <article class="product-card" data-name="first aid kit">
-                    <div class="product-picture">🩹</div>
-                    <h3>First Aid Kit</h3>
-                    <p>First-aid essentials</p>
-                    <a class="button" href="medicines.html">View Products</a>
-                </article>
-
-                <article class="product-card" data-name="vitamins wellness">
-                    <div class="product-picture">🍊</div>
-                    <h3>Vitamins & Wellness</h3>
-                    <p>Wellness product category</p>
-                    <a class="button" href="medicines.html">View Products</a>
-                </article>
-
-                <article class="product-card" data-name="personal care">
-                    <div class="product-picture">🧴</div>
-                    <h3>Personal Care</h3>
-                    <p>Everyday personal care</p>
-                    <a class="button" href="medicines.html">View Products</a>
-                </article>
-
-                <article class="product-card" data-name="health essentials">
-                    <div class="product-picture">🌡️</div>
-                    <h3>Health Essentials</h3>
-                    <p>Common health supplies</p>
-                    <a class="button" href="medicines.html">View Products</a>
-                </article>
-            </div>
-
-            <p class="no-results" id="noResults">
-                No matching featured products found.
-            </p>
-
-            <p class="note">
-                These are category previews. See All Medicines for the
-                products listed on your existing medicines page.
-            </p>
-        </div>
-    </section>
-
-    <!-- WEEKLY AND MONTHLY SALES -->
-    <section class="section" id="sales">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Sales Dashboard</h2>
-                <p>Add daily sales to calculate this week's and this month's totals.</p>
-            </div>
-
-            <form class="sales-form" id="salesForm">
-                <div class="field">
-                    <label for="saleDate">Sales Date</label>
-                    <input id="saleDate" type="date" required>
-                </div>
-
-                <div class="field">
-                    <label for="saleAmount">Sales Amount (₹)</label>
-                    <input id="saleAmount" type="number"
-                           min="0.01" step="0.01"
-                           placeholder="Enter amount" required>
-                </div>
-
-                <button class="button" type="submit">Add Sales</button>
-            </form>
-
-            <div class="sales-summary">
-                <div class="sales-stat">
-                    <p>This Week's Sales</p>
-                    <h3 id="weeklySales">₹0.00</h3>
-                    <small>Monday to today</small>
-                </div>
-
-                <div class="sales-stat">
-                    <p>This Month's Sales</p>
-                    <h3 id="monthlySales">₹0.00</h3>
-                    <small>First day of month to today</small>
-                </div>
-            </div>
-
-            <div class="records-card">
-                <div class="records-header">
-                    <h3>Sales Records</h3>
-                    <button class="button button-secondary" type="button"
-                            id="clearSales">Clear Records</button>
-                </div>
-
-                <div id="salesRecords" aria-live="polite">
-                    No sales records added yet.
-                </div>
-
-                <p class="note">
-                    Demo feature: records are saved only in this browser.
-                    They are not connected to real customer orders or a database.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT MEDITRACK -->
-    <section class="section section-soft" id="about">
-        <div class="container">
-            <div class="section-heading">
-                <h2>About MediTrack</h2>
-                <p>Learn about our pharmacy and find our contact details.</p>
-            </div>
-
-            <div class="about-card">
-                <div class="avatar" aria-hidden="true">MT</div>
-
-                <h3>MediTrack</h3>
-                <p class="about-intro">
-                    A pharmacy website for exploring healthcare essentials.
-                </p>
-
-                <div class="about-detail">
-                    <span class="about-label">Owner</span>
-                    <strong>Tamanna Mulani</strong>
-                </div>
-
-                <div class="about-detail">
-                    <span class="about-label">Phone Number</span>
-                    <a href="tel:+918080192807">8080192807</a>
-                </div>
-
-                <div class="about-detail">
-                    <span class="about-label">Email Address</span>
-                    <a href="mailto:mulanitamanna93@gamil.com">
-                        mulanitamanna93@gamil.com
-                    </a>
-                </div>
-
-                <div class="about-detail">
-                    <span class="about-label">Address</span>
-                    <p>
-                        Ground Floor, near Lokmanya Hospital,
-                        Sector 27A, Nigdi, Pune
-                    </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Lokmanya+Hospital+Sector+27A+Nigdi+Pune"
-                       target="_blank" rel="noopener noreferrer">
-                        Find nearby location on Google Maps
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <div class="container">
-        <p>
-            © <span id="currentYear"></span> MediTrack Pharmacy.
-            All rights reserved.
+        <label>Payment method</label>
+        <input type="text" value="Cash on Delivery" readonly>
+        <p class="muted">
+          Pay when your order is delivered. Online payment is not
+          enabled on this demo website.
         </p>
-        <p>Website demonstration project.</p>
-    </div>
-</footer>
 
-<script>
-    // Mobile menu
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+        <button type="submit" id="placeOrderBtn">
+          Place Order
+        </button>
+      </form>
 
-    menuToggle.addEventListener("click", function () {
-        const opened = navLinks.classList.toggle("open");
-        menuToggle.setAttribute("aria-expanded", String(opened));
-    });
+      <div id="message" class="notice" role="status"
+        aria-live="polite"></div>
 
-    navLinks.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", function () {
-            navLinks.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-        });
-    });
+      <div id="confirmationActions" hidden>
+        <a id="whatsappLink" class="button" target="_blank"
+          rel="noopener noreferrer">
+          Send Order on WhatsApp
+        </a>
+        <a href="medicines.html" class="button secondary">
+          Continue Shopping
+        </a>
+      </div>
+    </section>
 
-    // Featured product search
-    const productSearch = document.getElementById("productSearch");
-    const productCards = document.querySelectorAll(".product-card");
-    const noResults = document.getElementById("noResults");
+    <section class="card">
+      <h2>Order Summary</h2>
+      <div id="cartItems">
+        <p class="muted">Loading your cart...</p>
+      </div>
 
-    productSearch.addEventListener("input", function () {
-        const query = productSearch.value.toLowerCase().trim();
-        let count = 0;
+      <div class="total">
+        <span>Total</span>
+        <span id="cartTotal">₹0.00</span>
+      </div>
 
-        productCards.forEach(function (card) {
-            const matches = card.dataset.name.includes(query);
-            card.style.display = matches ? "" : "none";
-            if (matches) count++;
-        });
+      <p class="muted">
+        Please check the medicines and quantities before confirming.
+      </p>
+    </section>
+  </main>
 
-        noResults.style.display = count === 0 ? "block" : "none";
-    });
+  <footer>
+    © 2026 MediTrack | Your health, our priority.
+  </footer>
 
-    // Footer year
-    document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
+  <script>
+    const CART_KEYS = [
+      "meditrackCart",
+      "meditrack_cart",
+      "medicareCart",
+      "medicare_cart",
+      "cartItems",
+      "cart"
+    ];
 
-    // Sales dashboard: browser-only storage
-    const salesForm = document.getElementById("salesForm");
-    const dateInput = document.getElementById("saleDate");
-    const amountInput = document.getElementById("saleAmount");
-    const recordsBox = document.getElementById("salesRecords");
-    const storageKey = "meditrackSalesRecords";
+    const ORDERS_KEY = "meditrackDemoOrders";
 
-    function localDateString(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const day = String(date.getDate()).padStart(2, "0");
-        return `${year}-${month}-${day}`;
-    }
+    let cart = [];
+    let activeCartKey = null;
+    let orderPlaced = false;
 
-    function readSales() {
+    const cartItemsElement = document.getElementById("cartItems");
+    const cartTotalElement = document.getElementById("cartTotal");
+    const messageElement = document.getElementById("message");
+    const placeOrderButton = document.getElementById("placeOrderBtn");
+    const form = document.getElementById("checkoutForm");
+
+    function readCart() {
+      for (const key of CART_KEYS) {
         try {
-            const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
-            return Array.isArray(data) ? data.filter(function (record) {
-                return record &&
-                    typeof record.date === "string" &&
-                    /^\d{4}-\d{2}-\d{2}$/.test(record.date) &&
-                    Number.isFinite(record.amount) &&
-                    record.amount > 0;
-            }) : [];
-        } catch (error) {
-            return [];
-        }
-    }
+          const saved = localStorage.getItem(key);
+          if (!saved) continue;
 
-    function saveSales(records) {
-        localStorage.setItem(storageKey, JSON.stringify(records));
-    }
+          const parsed = JSON.parse(saved);
+          const items = Array.isArray(parsed)
+            ? parsed
+            : parsed && Array.isArray(parsed.items)
+              ? parsed.items
+              : null;
 
-    function renderSales() {
-        const records = readSales();
-        const today = new Date();
-        const todayString = localDateString(today);
-
-        const monday = new Date(today);
-        monday.setHours(0, 0, 0, 0);
-        monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
-        const mondayString = localDateString(monday);
-
-        const currentMonth = todayString.slice(0, 7);
-        let weeklyTotal = 0;
-        let monthlyTotal = 0;
-
-        records.forEach(function (record) {
-            if (record.date >= mondayString && record.date <= todayString) {
-                weeklyTotal += record.amount;
-            }
-
-            if (record.date.startsWith(currentMonth) &&
-                record.date <= todayString) {
-                monthlyTotal += record.amount;
-            }
-        });
-
-        document.getElementById("weeklySales").textContent =
-            "₹" + weeklyTotal.toFixed(2);
-
-        document.getElementById("monthlySales").textContent =
-            "₹" + monthlyTotal.toFixed(2);
-
-        recordsBox.replaceChildren();
-
-        if (records.length === 0) {
-            recordsBox.textContent = "No sales records added yet.";
+          if (items && items.length > 0) {
+            cart = items;
+            activeCartKey = key;
             return;
+          }
+        } catch (error) {
+          console.warn("Could not read cart key:", key, error);
         }
+      }
 
-        records.slice().sort(function (a, b) {
-            return b.date.localeCompare(a.date);
-        }).forEach(function (record) {
-            const row = document.createElement("div");
-            row.className = "record";
-
-            const date = document.createElement("span");
-            date.textContent = record.date;
-
-            const amount = document.createElement("strong");
-            amount.textContent = "₹" + record.amount.toFixed(2);
-
-            row.append(date, amount);
-            recordsBox.appendChild(row);
-        });
+      cart = [];
+      activeCartKey = null;
     }
 
-    dateInput.value = localDateString(new Date());
-    dateInput.max = localDateString(new Date());
+    function getItemDetails(item) {
+      const name = String(
+        item.name || item.title || item.productName || "Medicine"
+      );
 
-    salesForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+      const price = Number(
+        item.price ?? item.amount ?? item.unitPrice ?? 0
+      );
 
-        const date = dateInput.value;
-        const amount = Number(amountInput.value);
-        const today = localDateString(new Date());
+      const quantity = Number(
+        item.quantity ?? item.qty ?? item.count ?? 1
+      );
 
-        if (!date || date > today || !Number.isFinite(amount) || amount <= 0) {
-            alert("Please enter a valid sales date and a positive amount.");
-            return;
+      return {
+        name,
+        price: Number.isFinite(price) && price >= 0 ? price : 0,
+        quantity: Number.isFinite(quantity) && quantity > 0
+          ? Math.floor(quantity) : 1
+      };
+    }
+
+    function getTotal() {
+      return cart.reduce((sum, item) => {
+        const details = getItemDetails(item);
+        return sum + details.price * details.quantity;
+      }, 0);
+    }
+
+    function money(amount) {
+      return "₹" + amount.toLocaleString("en-IN", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function renderCart() {
+      cartItemsElement.replaceChildren();
+
+      if (cart.length === 0) {
+        const box = document.createElement("div");
+        box.className = "empty";
+
+        const text = document.createElement("p");
+        text.textContent = "Your cart is empty.";
+
+        const link = document.createElement("a");
+        link.href = "medicines.html";
+        link.className = "button";
+        link.textContent = "Browse Medicines";
+
+        box.append(text, link);
+        cartItemsElement.appendChild(box);
+        cartTotalElement.textContent = money(0);
+        placeOrderButton.disabled = true;
+        placeOrderButton.style.opacity = "0.6";
+        return;
+      }
+
+      cart.forEach(function(item) {
+        const details = getItemDetails(item);
+
+        const row = document.createElement("div");
+        row.className = "item";
+
+        const name = document.createElement("span");
+        name.textContent =
+          details.name + " × " + details.quantity;
+
+        const price = document.createElement("strong");
+        price.textContent =
+          money(details.price * details.quantity);
+
+        row.append(name, price);
+        cartItemsElement.appendChild(row);
+      });
+
+      cartTotalElement.textContent = money(getTotal());
+      placeOrderButton.disabled = false;
+      placeOrderButton.style.opacity = "1";
+    }
+
+    function showMessage(text, type) {
+      messageElement.textContent = text;
+      messageElement.className = "notice " + type;
+      messageElement.style.display = "block";
+    }
+
+    readCart();
+    renderCart();
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (orderPlaced) return;
+
+      readCart();
+      renderCart();
+
+      if (cart.length === 0) {
+        showMessage(
+          "Your cart is empty. Please add medicines before ordering.",
+          "error"
+        );
+        return;
+      }
+
+      if (!form.reportValidity()) return;
+
+      const name = document.getElementById("customerName")
+        .value.trim();
+      const phone = document.getElementById("customerPhone")
+        .value.trim();
+      const address = document.getElementById("customerAddress")
+        .value.trim();
+
+      if (!/^[0-9]{10}$/.test(phone)) {
+        showMessage(
+          "Please enter a valid 10-digit mobile number.",
+          "error"
+        );
+        return;
+      }
+
+      const orderId = "MT" + Date.now();
+      const order = {
+        orderId: orderId,
+        name: name,
+        phone: phone,
+        address: address,
+        payment: "Cash on Delivery",
+        items: cart.map(function(item) {
+          const details = getItemDetails(item);
+          return {
+            name: details.name,
+            price: details.price,
+            quantity: details.quantity
+          };
+        }),
+        total: getTotal(),
+        date: new Date().toISOString(),
+        status: "Pending"
+      };
+
+      try {
+        const previousOrders = JSON.parse(
+          localStorage.getItem(ORDERS_KEY) || "[]"
+        );
+
+        if (!Array.isArray(previousOrders)) {
+          throw new Error("Invalid saved order list");
         }
 
-        const records = readSales();
-        records.push({ date: date, amount: amount });
+        previousOrders.push(order);
+        localStorage.setItem(
+          ORDERS_KEY,
+          JSON.stringify(previousOrders)
+        );
+      } catch (error) {
+        showMessage(
+          "The browser could not save your order. Please check browser storage and try again.",
+          "error"
+        );
+        return;
+      }
 
-        try {
-            saveSales(records);
-            amountInput.value = "";
-            renderSales();
-            alert("Sales record saved in this browser.");
-        } catch (error) {
-            alert("Could not save the record. Browser storage may be unavailable.");
-        }
+      orderPlaced = true;
+      placeOrderButton.disabled = true;
+      placeOrderButton.textContent = "Order Confirmed";
+
+      showMessage(
+        "Demo order created successfully! Order ID: " +
+        orderId + ". Total: " + money(order.total) +
+        ". This order is saved only in this browser; the pharmacy has not been notified yet.",
+        "success"
+      );
+
+      const orderLines = order.items.map(function(item) {
+        return item.name + " x " + item.quantity +
+          " = " + money(item.price * item.quantity);
+      }).join("\n");
+
+      const whatsappMessage =
+        "Hello MediTrack, I want to confirm my order.\n\n" +
+        "Order ID: " + orderId + "\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Address: " + address + "\n\n" +
+        "Items:\n" + orderLines + "\n\n" +
+        "Total: " + money(order.total) + "\n" +
+        "Payment: Cash on Delivery";
+
+      document.getElementById("whatsappLink").href =
+        "https://wa.me/918080192807?text=" +
+        encodeURIComponent(whatsappMessage);
+
+      document.getElementById("confirmationActions").hidden = false;
+
+      if (activeCartKey) {
+        localStorage.removeItem(activeCartKey);
+      }
+
+      cart = [];
+      activeCartKey = null;
+      renderCart();
+      form.reset();
     });
-
-    document.getElementById("clearSales").addEventListener("click", function () {
-        if (confirm("Are you sure you want to delete all sales records in this browser?")) {
-            localStorage.removeItem(storageKey);
-            renderSales();
-        }
-    });
-
-    renderSales();
-</script>
-
+  </script>
 </body>
 </html>
