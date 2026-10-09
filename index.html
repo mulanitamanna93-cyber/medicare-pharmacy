@@ -504,5 +504,123 @@
       form.reset();
     });
   </script>
+  
+<script>
+(function () {
+  // Find the existing Place Order button.
+  const buttons = Array.from(document.querySelectorAll("button, input[type='submit']"));
+
+  const orderButton = buttons.find(function (button) {
+    const text = button.tagName === "INPUT"
+      ? button.value
+      : button.innerText;
+
+    return /place\s*order/i.test(text || "");
+  });
+
+  if (!orderButton) {
+    console.error("Place Order button was not found.");
+    return;
+  }
+
+  orderButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    const form = orderButton.closest("form");
+
+    // Validate required fields, if the button is inside a form.
+    if (form && !form.reportValidity()) {
+      return;
+    }
+
+    // Collect checkout details.
+    const fields = form
+      ? Array.from(form.querySelectorAll("input, textarea, select"))
+      : Array.from(document.querySelectorAll("input, textarea, select"));
+
+    function getField(pattern) {
+      const field = fields.find(function (element) {
+        const label = element.labels
+          ? Array.from(element.labels).map(function (l) {
+              return l.innerText;
+            }).join(" ")
+          : "";
+
+        return pattern.test(
+          (element.name || "") + " " +
+          (element.id || "") + " " +
+          label
+        );
+      });
+
+      return field ? field.value.trim() : "";
+    }
+
+    const name = getField(/name/i);
+    const phone = getField(/phone|mobile|tel/i);
+    const address = getField(/address/i);
+    const pin = getField(/pin|postal/i);
+    const state = getField(/state/i);
+
+    const paymentField = fields.find(function (element) {
+      return element.checked &&
+        /payment|method/i.test(
+          (element.name || "") + " " + (element.id || "")
+        );
+    });
+
+    const payment = paymentField
+      ? paymentField.value
+      : "Cash on Delivery";
+
+    const totalElement = document.querySelector(
+      "#cartTotal, #total, .total-amount, .grand-total"
+    );
+
+    const totalText = totalElement
+      ? totalElement.innerText.trim()
+      : "Please confirm total on checkout page";
+
+    // Show a clear message if details cannot be identified.
+    if (!name || !phone || !address) {
+      alert(
+        "Please make sure your checkout form has customer name, " +
+        "mobile number and complete address fields. " +
+        "If they are already filled, the form field names may need matching."
+      );
+      return;
+    }
+
+    if (!/^[0-9]{10}$/.test(phone.replace(/\D/g, ""))) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    const message =
+      "Hello MediTrack, I want to place an order.\n\n" +
+      "Customer: " + name + "\n" +
+      "Phone: " + phone + "\n" +
+      "Address: " + address + "\n" +
+      (state ? "State: " + state + "\n" : "") +
+      (pin ? "PIN Code: " + pin + "\n" : "") +
+      "Payment: " + payment + "\n" +
+      "Checkout total: " + totalText + "\n\n" +
+      "Please confirm my order.";
+
+    const whatsappURL =
+      "https://wa.me/918080192807?text=" +
+      encodeURIComponent(message);
+
+    // Open WhatsApp so the customer can send the order.
+    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+
+    alert(
+      "Your order message is ready in WhatsApp. " +
+      "Please press Send in WhatsApp to submit your order to MediTrack."
+    );
+  }, true);
+})();
+</script>
 </body>
 </html>
